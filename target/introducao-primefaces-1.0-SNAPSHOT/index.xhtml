@@ -2,10 +2,25 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="/WEB-INF/template.xhtml">
+                template="/WEB-INF/template.xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
-        <h1>Seja Bem-Vindo!</h1>
+        <div align="center">
+            <h:form>
+                <h1 style="margin-top: 70px; font-family: Baskerville;">Descubra os sabores autênticos</h1>
+                <h1 style="font-family: Baskerville; margin-bottom: 30px;">da Padaria Familiar</h1>
+                <p:button value="Ir para as compras"
+                          styleClass="ui-button-info"
+                          />
+                
+            </h:form>
+        </div>
+        
+        <img src="https://blog.dipratos.com.br/wp-content/themes/yootheme/cache/7d/tipos-de-padaria-7d78eb1e.webp" 
+             height="500px" />
+        
     </ui:define>
 
 </ui:composition>

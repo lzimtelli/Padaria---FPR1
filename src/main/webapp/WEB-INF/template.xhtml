@@ -21,18 +21,22 @@
             <ui:insert name="top">
                 <h:form>
                     <p:menubar>
+                        <p:menuitem value="Padaria Familiar" icon="pi pi-fw pi-home"
+                                    outcome="/index" />
+                        
                         <f:facet name="end">
 <!--                            <a href="/login/login" style="color: black; margin-right: 20px;">
                                 <p>Comprar</p>
                             </a>-->
+
+                            <a href="/sobreNos"></a>
                             
                             <h:outputText value="Comprar"
-                                          style="color: black; margin-right: 20px
-                                          "/>
+                                          style="color: black; margin-right: 20px"
+                                          />
 
-                            <h:outputText value="Quem somos"
-                                          style="color: black; margin-right: 20px
-                                          "/>
+                            <h:link value="Quem somos" outcome="/sobreNos" style="color: black; margin-right: 20px" />
+
                             
                             <h:outputText 
                                 value="#{loginController.pessoaAutenticada.nome}" 
