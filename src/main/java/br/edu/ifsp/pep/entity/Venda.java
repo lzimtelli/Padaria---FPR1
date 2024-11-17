@@ -5,15 +5,25 @@
 package br.edu.ifsp.pep.entity;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.Table;
 import java.time.LocalDate;
 
 /**
  *
  * @author User
  */
+@Entity
+@Table(name = "venda")
+@NamedQueries({
+    @NamedQuery(name = "Venda.buscarTodas", query = "FROM Venda v"),
+    @NamedQuery(name = "Venda.buscarPorData",  query = "FROM Venda v WHERE v.data BETWEEN :datainicio AND :datafim"),
+})
 public class Venda {
     
     @Id
