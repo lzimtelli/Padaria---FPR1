@@ -5,6 +5,7 @@
 package br.edu.ifsp.pep.entity;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.ManyToMany;
@@ -34,4 +35,46 @@ public class ItemVenda {
     
     @Column(name = "valor_unitario")
     private Double valorUnitario;
+
+    public int getIdItemVenda() {
+        return idItemVenda;
+    }
+
+    public void setIdItemVenda(int idItemVenda) {
+        this.idItemVenda = idItemVenda;
+    }
+
+    public Venda getIdVenda() {
+        return idVenda;
+    }
+
+    public void setIdVenda(Venda idVenda) {
+        this.idVenda = idVenda;
+    }
+
+    public Produto getProdutoVenda() {
+        return produtoVenda;
+    }
+
+    public void setProdutoVenda(Produto produtoVenda) {
+        this.produtoVenda = produtoVenda;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public Double getValorUnitario() {
+        return valorUnitario;
+    }
+
+    public void setValorUnitario(Double valorUnitario) {
+        this.valorUnitario = valorUnitario;
+    }
+    
+    
 }
