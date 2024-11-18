@@ -5,14 +5,18 @@
 package br.edu.ifsp.pep.entity;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 /**
  *
  * @author User
  */
+@Entity
+@Table(name = "endereco")
 public class Endereco {
 
     @Id

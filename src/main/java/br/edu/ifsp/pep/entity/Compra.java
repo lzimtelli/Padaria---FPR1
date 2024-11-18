@@ -5,6 +5,7 @@
 package br.edu.ifsp.pep.entity;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -16,6 +17,7 @@ import java.util.Objects;
  *
  * @author User
  */
+@Entity
 @Table(name = "compra")
 public class Compra {
     
