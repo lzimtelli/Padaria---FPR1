@@ -6,11 +6,16 @@ package br.edu.ifsp.pep.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.io.Serializable;
 
 /**
  *
@@ -18,17 +23,21 @@ import jakarta.persistence.Table;
  */
 @Table(name = "item_venda")
 @IdClass(ItemVendaPK.class)
-public class ItemVenda {
+public class ItemVenda implements Serializable{
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_item")
     private int idItemVenda;
     
     @Id
-    @ManyToMany  //deve ta certo
+    @JoinColumn(name = "id_venda",referencedColumnName = "id_venda",nullable = false)
+    @ManyToOne(optional = false)
     private Venda idVenda;
     
-    @OneToMany
-   @Column(name = "produto_venda")
+
+    @JoinColumn(name = "produto_venda",referencedColumnName = "id_produto",nullable = false)
+    @ManyToOne(optional = false)
     private Produto produtoVenda;
     
     private int quantidade;
