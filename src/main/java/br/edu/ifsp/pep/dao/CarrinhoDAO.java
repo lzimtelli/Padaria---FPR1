@@ -4,12 +4,10 @@
  */
 package br.edu.ifsp.pep.dao;
 
-import br.edu.ifsp.pep.entity.Compra;
-
 /**
  *
  * @author User
  */
-public class CompraDAO extends AbstractDAO<Compra>{
+public class CarrinhoDAO {
     
 }

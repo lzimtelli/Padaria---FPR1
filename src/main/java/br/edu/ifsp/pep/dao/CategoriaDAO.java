@@ -4,10 +4,12 @@
  */
 package br.edu.ifsp.pep.dao;
 
+import br.edu.ifsp.pep.entity.Categoria;
+
 /**
  *
  * @author User
  */
-public class ItemVendaDAO {
+public class CategoriaDAO extends AbstractDAO<Categoria>{
     
 }

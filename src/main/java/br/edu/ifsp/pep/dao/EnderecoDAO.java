@@ -4,12 +4,12 @@
  */
 package br.edu.ifsp.pep.dao;
 
-import br.edu.ifsp.pep.entity.Compra;
+import br.edu.ifsp.pep.entity.Endereco;
 
 /**
  *
  * @author User
  */
-public class CompraDAO extends AbstractDAO<Compra>{
+public class EnderecoDAO extends AbstractDAO<Endereco>{
     
 }
