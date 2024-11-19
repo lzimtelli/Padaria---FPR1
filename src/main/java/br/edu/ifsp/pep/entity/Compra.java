@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,7 +20,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "compra")
-public class Compra {
+public class Compra implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

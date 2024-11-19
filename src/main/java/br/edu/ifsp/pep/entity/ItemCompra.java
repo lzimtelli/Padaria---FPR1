@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -19,7 +20,7 @@ import java.time.LocalDate;
  */
 @Table(name = "item_compra")
 @IdClass(ItemCompraPK.class)
-public class ItemCompra {
+public class ItemCompra implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

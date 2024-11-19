@@ -12,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -24,7 +25,7 @@ import java.time.LocalDate;
     @NamedQuery(name = "Venda.buscarTodas", query = "FROM Venda v"),
     @NamedQuery(name = "Venda.buscarPorData",  query = "FROM Venda v WHERE v.data BETWEEN :datainicio AND :datafim"),
 })
-public class Venda {
+public class Venda implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
