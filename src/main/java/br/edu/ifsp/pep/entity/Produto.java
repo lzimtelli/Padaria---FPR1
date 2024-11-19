@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
@@ -27,6 +29,10 @@ public class Produto implements Serializable{
     @Column(name = "id_produto")
     private Long idProduto;
     
+    @ManyToOne
+    @JoinColumn(name = "id_categoria",referencedColumnName = "id_categoria",nullable = false)
+    private Categoria categoria; 
+    
     @Column(nullable = false,length = 50)
     private String descricao;
     
@@ -42,8 +48,6 @@ public class Produto implements Serializable{
     @Column(name = "valor_venda",nullable = false)
     private Double valorVenda;
     
-    @OneToMany
-    private Categoria categoria;
 
     public Produto() {
     }
@@ -59,7 +63,7 @@ public class Produto implements Serializable{
     }
     
     
-    
+   
 
     public Long getIdProduto() {
         return idProduto;
@@ -69,6 +73,8 @@ public class Produto implements Serializable{
         this.idProduto = idProduto;
     }
 
+    
+    
     public String getDescricao() {
         return descricao;
     }
