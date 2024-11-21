@@ -39,6 +39,11 @@ public class CategoriaController implements Serializable {
             Mensagem.atencao("Selecione umca categoria.");
         }
     }
+    
+    public void prepararCadastro(){
+        
+        
+    }
 
     public String adicionar() {
 

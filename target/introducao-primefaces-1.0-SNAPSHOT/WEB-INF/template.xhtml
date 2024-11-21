@@ -22,8 +22,48 @@
                 <h:form>
                     <p:menubar>
                         <f:facet name="end">
+<!--                            <a href="/login/login" style="color: black; margin-right: 20px;">
+                                <p>Comprar</p>
+                            </a>-->
+                            
+                            <p:menubar>
+                        <p:menuitem value="Home" icon="pi pi-fw pi-home"
+                                    outcome="/index" />
+                        <p:submenu label="Produto" icon="pi pi-money-bill">
+                            <p:menuitem value="Listagem Produto" icon="pi pi-list"
+                                        outcome="/financeiro/List"/>
+                            <p:menuitem value="Cadastro Produto" icon="pi pi-plus-circle"
+                                        outcome="/financeiro/Create"/>
+                        </p:submenu>
+                        <p:menuitem value="Comum" icon="pi pi-address-book" 
+                                    outcome="/comum" />
+                        <p:menuitem value="Pessoa" icon="pi pi-fw pi-user"
+                                    outcome="/pessoa/ListPessoa"
+                                    rendered="#{pessoaController.exibirItemMenu()}" />
+                        <p:menuitem value="Veículo" icon="pi pi-fw pi-car"
+                                    outcome="/veiculo/ListVeiculo"
+                                    rendered="true" />
+
+                        <f:facet name="end">
+                            <h:outputText 
+                                value="#{loginController.pessoaAutenticada.nome}" 
+                                style="color: red; margin-right: 10px" />
+                            <p:commandButton value="Login" 
+                                             icon="pi pi-fw pi-sign-in" 
+                                             action="/pessoa/Login" />
+                        </f:facet>
+                    </p:menubar>
+
+
+
+
+                            <h:outputText value="Comprar"
+                                          style="color: black; margin-right: 20px
+                                          "/>
+
                             <h:outputText value="Quem somos"
-                                          style="color: black"/>
+                                          style="color: black; margin-right: 20px
+                                          "/>
                             
                             <h:outputText 
                                 value="#{loginController.pessoaAutenticada.nome}" 
