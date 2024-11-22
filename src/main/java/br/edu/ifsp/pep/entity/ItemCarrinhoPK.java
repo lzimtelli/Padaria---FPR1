@@ -7,41 +7,42 @@ package br.edu.ifsp.pep.entity;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
  * @author User
  */
-public class ItemCarrinhoPK implements Serializable{
-    
-      @Basic(optional = false)
-    @Column(name = "id_item", nullable = false)
-    private int idItemVenda;
+public class ItemCarrinhoPK implements Serializable {
+
     @Basic(optional = false)
-    @Column(name = "id_venda", nullable = false)
-    private int carrinho;
+    @Column(name = "id_produto", nullable = false)
+    private Long produto;
+    @Basic(optional = false)
+    @Column(name = "id_carrinho", nullable = false)
+    private Long carrinho;
 
-    public int getIdItemVenda() {
-        return idItemVenda;
+    public Long getProduto() {
+        return produto;
     }
 
-    public void setIdItemVenda(int idItemVenda) {
-        this.idItemVenda = idItemVenda;
+    public void setProduto(Long produto) {
+        this.produto = produto;
     }
 
-    public int getCarrinho() {
+    public Long getCarrinho() {
         return carrinho;
     }
 
-    public void setCarrinho(int carrinho) {
+    public void setCarrinho(Long carrinho) {
         this.carrinho = carrinho;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 73 * hash + this.idItemVenda;
-        hash = 73 * hash + this.carrinho;
+        int hash = 5;
+        hash = 17 * hash + Objects.hashCode(this.produto);
+        hash = 17 * hash + Objects.hashCode(this.carrinho);
         return hash;
     }
 
@@ -57,14 +58,14 @@ public class ItemCarrinhoPK implements Serializable{
             return false;
         }
         final ItemCarrinhoPK other = (ItemCarrinhoPK) obj;
-        if (this.idItemVenda != other.idItemVenda) {
+        if (!Objects.equals(this.produto, other.produto)) {
             return false;
         }
-        return this.carrinho == other.carrinho;
+        return Objects.equals(this.carrinho, other.carrinho);
     }
-    
-    
 
     
-    
+
+ 
+
 }

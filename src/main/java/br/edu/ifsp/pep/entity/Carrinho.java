@@ -1,31 +1,47 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package br.edu.ifsp.pep.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
-/**
- *
- * @author User
- */
-public class Carrinho {
-    
+@Entity
+@Table(name = "carrinho")
+public class Carrinho implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_carrinho")
     private Long idCarrinho;
-    
+
+    @ManyToOne
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", nullable = false)
     private Cliente cliente;
-    
-    @Column(name = "item_carrinhos")
+
+    @OneToMany(mappedBy = "carrinho", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemCarrinho> itemCarrinhos;
-    
-    
-    
+
+    // Getters e setters
+    public Long getIdCarrinho() {
+        return idCarrinho;
+    }
+
+    public void setIdCarrinho(Long idCarrinho) {
+        this.idCarrinho = idCarrinho;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<ItemCarrinho> getItemCarrinhos() {
+        return itemCarrinhos;
+    }
+
+    public void setItemCarrinhos(List<ItemCarrinho> itemCarrinhos) {
+        this.itemCarrinhos = itemCarrinhos;
+    }
 }

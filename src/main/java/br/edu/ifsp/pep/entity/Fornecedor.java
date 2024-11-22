@@ -23,8 +23,8 @@ public class Fornecedor implements Serializable{
  
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_forncedor")
-    private Long idForncedor;
+    @Column(name = "id_fornecedor")
+    private Long idFornecedor;
     
     @Column(nullable = false,length = 50)
     private String nomeFantasia;
@@ -47,8 +47,8 @@ public class Fornecedor implements Serializable{
     public Fornecedor() {
     }
 
-    public Fornecedor(Long idForncedor, String nomeFantasia, String razaoSocial, String representante, String cnpj, String email, String telefone) {
-        this.idForncedor = idForncedor;
+    public Fornecedor(Long idFornecedor, String nomeFantasia, String razaoSocial, String representante, String cnpj, String email, String telefone) {
+        this.idFornecedor = idFornecedor;
         this.nomeFantasia = nomeFantasia;
         this.razaoSocial = razaoSocial;
         this.representante = representante;
@@ -57,12 +57,12 @@ public class Fornecedor implements Serializable{
         this.telefone = telefone;
     }
 
-    public Long getIdForncedor() {
-        return idForncedor;
+    public Long getIdFornecedor() {
+        return idFornecedor;
     }
 
-    public void setIdForncedor(Long idForncedor) {
-        this.idForncedor = idForncedor;
+    public void setIdFornecedor(Long idForncedor) {
+        this.idFornecedor = idForncedor;
     }
 
     public String getNomeFantasia() {
@@ -116,7 +116,7 @@ public class Fornecedor implements Serializable{
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 11 * hash + Objects.hashCode(this.idForncedor);
+        hash = 11 * hash + Objects.hashCode(this.idFornecedor);
         return hash;
     }
 
@@ -132,7 +132,7 @@ public class Fornecedor implements Serializable{
             return false;
         }
         final Fornecedor other = (Fornecedor) obj;
-        return Objects.equals(this.idForncedor, other.idForncedor);
+        return Objects.equals(this.idFornecedor, other.idFornecedor);
     }
     
     

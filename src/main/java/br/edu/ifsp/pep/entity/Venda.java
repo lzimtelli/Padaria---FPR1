@@ -23,7 +23,7 @@ import java.time.LocalDate;
 @Table(name = "venda")
 @NamedQueries({
     @NamedQuery(name = "Venda.buscarTodas", query = "FROM Venda v"),
-    @NamedQuery(name = "Venda.buscarPorData",  query = "FROM Venda v WHERE v.data BETWEEN :datainicio AND :datafim"),
+  //  @NamedQuery(name = "Venda.buscarPorData",  query = "FROM Venda v WHERE v.data BETWEEN :datainicio AND :datafim"),
 })
 public class Venda implements Serializable{
     

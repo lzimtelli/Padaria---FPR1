@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.List;
@@ -27,7 +29,8 @@ public class Compra implements Serializable{
     @Column(name = "id_compra")
     private Long idCompra;
     
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "id_fornecedor",referencedColumnName = "id_fornecedor",nullable = false)
     private Fornecedor fornecedor;
     
     

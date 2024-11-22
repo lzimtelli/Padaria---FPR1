@@ -25,15 +25,17 @@ import java.util.Objects;
 @IdClass(ItemCarrinhoPK.class)
 public class ItemCarrinho implements Serializable{
     
-    @Id
+    //@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_item")
     private int idItemCarrinho;
     
     @Id
     @JoinColumn(name = "id_carrinho",referencedColumnName = "id_carrinho",nullable = false)
     @ManyToOne
-    private Carrinho Carrinho;
+    private Carrinho carrinho;
     
+    @Id
     @JoinColumn(name = "id_produto",referencedColumnName = "id_produto",nullable = false)
     @ManyToOne   
     private Produto produto;
@@ -53,11 +55,11 @@ public class ItemCarrinho implements Serializable{
     }
 
     public Carrinho getCarrinho() {
-        return Carrinho;
+        return carrinho;
     }
 
-    public void setCarrinho(Carrinho Carrinho) {
-        this.Carrinho = Carrinho;
+    public void setCarrinho(Carrinho carrinho) {
+        this.carrinho = carrinho;
     }
 
     public Produto getProduto() {
@@ -86,9 +88,9 @@ public class ItemCarrinho implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 23 * hash + this.idItemCarrinho;
-        hash = 23 * hash + Objects.hashCode(this.Carrinho);
+        int hash = 3;
+        hash = 53 * hash + Objects.hashCode(this.carrinho);
+        hash = 53 * hash + Objects.hashCode(this.produto);
         return hash;
     }
 
@@ -104,12 +106,13 @@ public class ItemCarrinho implements Serializable{
             return false;
         }
         final ItemCarrinho other = (ItemCarrinho) obj;
-        if (this.idItemCarrinho != other.idItemCarrinho) {
+        if (!Objects.equals(this.carrinho, other.carrinho)) {
             return false;
         }
-        return Objects.equals(this.Carrinho, other.Carrinho);
+        return Objects.equals(this.produto, other.produto);
     }
-    
+
+ 
     
     
    

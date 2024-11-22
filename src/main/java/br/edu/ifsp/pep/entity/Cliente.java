@@ -12,7 +12,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.Objects;
-import org.primefaces.component.password.Password;
 
 /**
  *
@@ -38,20 +37,18 @@ public class Cliente implements Serializable{
     private boolean status = true;
     
     private String senha;
-    
-    private Password password; //aprender como mexe nessa bomba
+   
 
     public Cliente() {
     }
 
-    public Cliente(Long idCliente, String primeiroNome, String ultimoNome, String cpf, String telefone, String senha, Password password) {
+    public Cliente(Long idCliente, String primeiroNome, String ultimoNome, String cpf, String telefone, String senha) {
         this.idCliente = idCliente;
         this.primeiroNome = primeiroNome;
         this.ultimoNome = ultimoNome;
         this.cpf = cpf;
         this.telefone = telefone;
         this.senha = senha;
-        this.password = password;
     }
 
     
@@ -111,15 +108,7 @@ public class Cliente implements Serializable{
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
-    public Password getPassword() {
-        return password;
-    }
-
-    public void setPassword(Password password) {
-        this.password = password;
-    }
-
+    
     @Override
     public int hashCode() {
         int hash = 7;
