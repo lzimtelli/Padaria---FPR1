@@ -31,18 +31,11 @@
                                     outcome="/index" />
                         <p:submenu label="Produto" icon="pi pi-money-bill">
                             <p:menuitem value="Listagem Produto" icon="pi pi-list"
-                                        outcome="/financeiro/List"/>
+                                        outcome=""/>
                             <p:menuitem value="Cadastro Produto" icon="pi pi-plus-circle"
-                                        outcome="/financeiro/Create"/>
+                                        outcome=""/>
                         </p:submenu>
-                        <p:menuitem value="Comum" icon="pi pi-address-book" 
-                                    outcome="/comum" />
-                        <p:menuitem value="Pessoa" icon="pi pi-fw pi-user"
-                                    outcome="/pessoa/ListPessoa"
-                                    rendered="#{pessoaController.exibirItemMenu()}" />
-                        <p:menuitem value="Veículo" icon="pi pi-fw pi-car"
-                                    outcome="/veiculo/ListVeiculo"
-                                    rendered="true" />
+                    
 
                         <f:facet name="end">
                             <h:outputText 
