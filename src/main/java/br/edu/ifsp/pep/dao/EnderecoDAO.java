@@ -5,11 +5,13 @@
 package br.edu.ifsp.pep.dao;
 
 import br.edu.ifsp.pep.entity.Endereco;
+import jakarta.ejb.Stateless;
 
 /**
  *
  * @author User
  */
+@Stateless
 public class EnderecoDAO extends AbstractDAO<Endereco>{
     
 }

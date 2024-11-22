@@ -4,10 +4,13 @@
  */
 package br.edu.ifsp.pep.dao;
 
+import jakarta.ejb.Stateless;
+
 /**
  *
  * @author User
  */
+@Stateless
 public class CarrinhoDAO {
     
 }

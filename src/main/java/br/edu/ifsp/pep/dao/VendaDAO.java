@@ -5,6 +5,7 @@
 package br.edu.ifsp.pep.dao;
 
 import br.edu.ifsp.pep.entity.Venda;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.TypedQuery;
 import java.time.LocalDate;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
  *
  * @author User
  */
+@Stateless
 public class VendaDAO extends AbstractDAO<Venda> {
 
     public List<Venda> buscarTodas() {

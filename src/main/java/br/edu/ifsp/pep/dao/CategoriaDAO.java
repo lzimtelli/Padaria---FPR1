@@ -5,11 +5,13 @@
 package br.edu.ifsp.pep.dao;
 
 import br.edu.ifsp.pep.entity.Categoria;
+import jakarta.ejb.Stateless;
 
 /**
  *
  * @author User
  */
+@Stateless
 public class CategoriaDAO extends AbstractDAO<Categoria>{
     
 }
