@@ -5,9 +5,8 @@
 package br.edu.ifsp.pep;
 
 import br.edu.ifsp.pep.dao.PessoaDAO;
-import br.edu.ifsp.pep.dao.VeiculoDAO;
 import br.edu.ifsp.pep.entity.Pessoa;
-import br.edu.ifsp.pep.entity.Veiculo;
+
 
 /**
  *
@@ -22,10 +21,8 @@ public class Teste {
         pessoaDAO.inserir(new Pessoa());
         
         
-        VeiculoDAO veiculoDAO = new VeiculoDAO();
-        veiculoDAO.inserir(new Veiculo());
         
-//        veiculoDAO.inserir(new Pessoa());
+
         
         
         
