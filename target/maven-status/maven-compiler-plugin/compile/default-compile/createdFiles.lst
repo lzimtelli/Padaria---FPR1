@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 br\edu\ifsp\pep\entity\ItemCompraPK.class
 br\edu\ifsp\pep\entity\Venda.class
 br\edu\ifsp\pep\entity\ItemVenda.class
@@ -17,6 +15,7 @@ br\edu\ifsp\pep\controller\LoginController.class
 br\edu\ifsp\pep\dao\PessoaDAO.class
 br\edu\ifsp\pep\listener\LifeCycleListener.class
 br\edu\ifsp\pep\entity\ItemCarrinhoPK.class
+br\edu\ifsp\pep\controller\CategoriaController.class
 br\edu\ifsp\pep\dao\ItemCarrinhoDAO.class
 br\edu\ifsp\pep\entity\NivelAcesso.class
 br\edu\ifsp\pep\dao\ClienteDAO.class
@@ -32,4 +31,3 @@ br\edu\ifsp\pep\Teste.class
 br\edu\ifsp\pep\dao\CompraDAO.class
 br\edu\ifsp\pep\util\Mensagem.class
 br\edu\ifsp\pep\dao\AbstractDAO.class
->>>>>>> 4f15058b475f0210732dc3ad5ae57b19bf483438
