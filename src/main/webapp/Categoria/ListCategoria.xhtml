@@ -10,42 +10,30 @@
     <ui:define name="content">
         <h:form>
 
-            <p:dataTable id="tabela" value="#{veiculoController.veiculos}" 
+            <p:dataTable id="tabela" value="#{categoriaController.categorias}" 
                          var="item" selectionMode="single"
-                         selection="#{veiculoController.veiculoSelecionado}"
-                         rowKey="#{item.codigo}"
+                         selection="#{categoriaController.categoriaSelecionada}"
+                         rowKey="#{item.idCategoria}"
                          paginator="true" paginatorPosition="top"
                          rows="5"
                          rowsPerPageTemplate="2,4,5,{ShowAll|'All'}">
 
                 <p:column headerText="Código">
-                    <h:outputText value="#{item.codigo}" />
+                    <h:outputText value="#{item.idCategoria}" />
                 </p:column>
 
-                <p:column headerText="Nome">
-                    <h:outputText value="#{item.nome}" />
+                <p:column headerText="Descrição">
+                    <h:outputText value="#{item.descricao}" />
                 </p:column>
-
-                <p:column headerText="Placa">
-                    <h:outputText value="#{item.placa}" />
-                </p:column>
-
-                <p:column headerText="Ano">
-                    <h:outputText value="#{item.ano}" />
-                </p:column>
-
-                <p:column headerText="Valor Aluguel">
-                    <h:outputText value="#{item.valorAluguel}" />
-                </p:column>
-
+       
                 <f:facet name="footer">
                     <p:commandButton value="Cadastrar"
                                      update="tabela growl"
-                                     action="#{veiculoController.prepararCadastro}" />
+                                     action="#{categoriaController.prepararCadastro}" />
                     
                     <p:commandButton value="Remover"
                                      update="tabela growl"
-                                     action="#{veiculoController.remover}" />
+                                     action="#{categoriaController.remover}" />
                     
                     <p:commandButton value="Alterar"
                                      update="tabela growl"
