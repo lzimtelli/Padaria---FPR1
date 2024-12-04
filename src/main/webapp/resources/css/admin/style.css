@@ -1,0 +1,232 @@
+/* a{
+  text-decoration: none;
+} */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+}
+
+.padariaHeader {
+  color: #426b1f;
+  font-family: Newsreader;
+  font-size: 24px;
+  font-style: normal;
+  letter-spacing: -0.32px;
+  text-decoration: none;
+}
+
+.headerEnd {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.headerEnd a {
+  color: #000;
+  text-align: center;
+  font-feature-settings: "liga" off, "clig" off;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%; /* 20.8px */
+}
+
+.headerEnd .btn-header {
+  text-decoration: none;
+  border-radius: 4px;
+  background: #426b1f;
+  padding: 6px 15px;
+}
+
+.headerEnd .btn-header div {
+  color: #fff;
+  font-size: 16px;
+  /* font-style: normal; */
+  /* font-weight: 300; */
+  line-height: 130%;
+}
+.container {
+  /* background-color: #426b1f; */
+  /* margin-top: 48px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  padding: 30px 45px;
+}
+/*  */
+/*  */
+/*  */
+.center {
+  display: flex;
+  /* align-items: start; */
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.green {
+  color: #426b1f;
+}
+
+.teste {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* gap: 30px; */
+  width: 100%;
+  height: 550px;
+  /* border: 2px solid #ff0000; Borda superior sutil */
+}
+
+.ui-menu {
+  height: 100%;
+  border-radius: 0;
+}
+
+/* .menu-adm {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
+  background: #426b1f;
+  width: 20%;
+  height: 100%;
+} */
+
+.item-menu {
+  background-color: aqua;
+  padding: 10px 30px;
+  border-bottom: 2px solid #d1d1d1; /* Borda superior sutil */
+  width: 100%;
+  text-align: center;
+}
+
+.content {
+  width: 100%;
+  background: #fff;
+  /* background: #f8f9fa; */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid #dee2e6;
+  
+}
+
+.top {
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #426b1f; /* Borda superior sutil */
+}
+
+.content h2 {
+  color: #000;
+  margin: 0;
+  font-size: 36px;
+  font-style: normal;
+
+  /* font-weight: 700; */
+  /* line-height: normal; */
+  /* letter-spacing: -1.28px; */
+}
+
+body .ui-toolbar {
+  margin: 0;
+  padding: 0.5em;
+  width: auto;
+  border-radius: 0;
+}
+
+.table {
+  display: flex;
+  height: 100%;
+  margin: 5px;
+  /* gap: 10px; */
+}
+
+.table-categoria {
+  /* width: 20; */
+  height: 100%;
+}
+
+.table-products {
+}
+
+.table-products h1 {
+  padding: 0;
+  margin: 0;
+}
+
+th {
+  padding: 0;
+}
+
+.footer-options {
+  padding: 10px 5px;
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+}
+
+.btn {
+  text-decoration: none;
+  border-radius: 4px;
+  background: #426b1f;
+  padding: 6px 15px;
+  text-decoration: none;
+  color: white;
+}
+
+/* aa; */
+/*  */
+/*  */
+
+footer {
+  /* position: relative; */
+  /* bottom: 0; */
+  background: linear-gradient(
+    to bottom,
+    #ffffff,
+    #ecececa6
+  ); /* Gradiente suave */
+  border-top: 2px solid #d1d1d1; /* Borda superior sutil */
+  padding: 20px; /* Espaçamento interno */
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* Sombra leve para destacar o footer */
+}
+.container-footer {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  justify-content: space-between;
+}
+
+.container-footer .texto {
+  color: #000;
+  font-size: 24px;
+  font-weight: 400;
+}
+.container-footer .icons img {
+  width: 36px;
+  height: 36px;
+}
+
+.container-footer .inicio {
+  display: flex;
+  gap: 50px;
+  flex-direction: column;
+}

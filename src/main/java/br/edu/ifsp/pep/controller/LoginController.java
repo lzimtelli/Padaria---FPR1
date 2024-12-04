@@ -1,6 +1,7 @@
 package br.edu.ifsp.pep.controller;
 
 import br.edu.ifsp.pep.dao.PessoaDAO;
+import br.edu.ifsp.pep.entity.NivelAcesso;
 import br.edu.ifsp.pep.entity.Pessoa;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
@@ -17,15 +18,24 @@ public class LoginController implements Serializable {
     private Pessoa pessoa = new Pessoa();
     
     private Pessoa pessoaAutenticada;
+    
+    private Pessoa pessoaCadastro = new Pessoa();
 
     public String autenticar() {
         this.pessoaAutenticada = pessoaDAO.autenticar(pessoa.getLogin(), pessoa.getSenha());
-        return "/index";
+        return "/pessoa/meuPerfil";
     }
 
     public String logout() {
         this.pessoaAutenticada = null;
         return "/index";
+    }
+    
+    public String cadastrarUsuario(){  
+        pessoaCadastro.setNivelAcesso(NivelAcesso.Comum);
+        pessoaDAO.inserir(pessoaCadastro);
+        
+        return "/login/login.xhtml";
     }
 
     public boolean usuarioLogado() {
@@ -38,5 +48,13 @@ public class LoginController implements Serializable {
 
     public Pessoa getPessoaAutenticada() {
         return pessoaAutenticada;
+    }
+
+    public Pessoa getPessoaCadastro() {
+        return pessoaCadastro;
+    }
+
+    public void setPessoaCadastro(Pessoa pessoaCadastro) {
+        this.pessoaCadastro = pessoaCadastro;
     }
 }

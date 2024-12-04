@@ -27,51 +27,48 @@
         <h:form>
             <div align="center" style="align-self: center; margin-top: 320px; font-family: Arial">
                 <div style="margin-bottom: 10px;">
-                    <a style="font-family: Arial; font-weight: bold; font-size: 20px;">Login</a> <br /> 
+                    <a style="font-family: Arial; font-weight: bold; font-size: 20px;">Registrar</a> <br /> 
                 </div>
                 <div style="margin-bottom: 20px;">
-                    <a>Entre com seu email e senha</a>
+                    <a>Entre com seus dados para se registrar</a>
                 </div>
-                <h:panelGroup rendered="#{not loginController.usuarioLogado()}">
+                <h:panelGroup>
+                    <div style="margin-bottom: 10px; border-bottom: black;" class="field">
+                        <span class="ui-float-label">
+                            <p:inputText id="nome" 
+                                         value="#{loginController.pessoaCadastro.nome}" 
+                                         style="width: 350px"
+                                         />
+                            <p:outputLabel for="@previous" value="Nome" />
+                        </span>
+                    </div>
                     <div style="margin-bottom: 10px; border-bottom: black;" class="field">
                         <span class="ui-float-label">
                             <p:inputText id="login" 
-                                         value="#{loginController.pessoa.login}" 
-                                         style="width: 350px"/>
-                            <!--<p:outputLabel for="@previous" value="Login" />-->
+                                         value="#{loginController.pessoaCadastro.login}" 
+                                         style="width: 350px"
+                                         />
+                            <p:outputLabel for="@previous" value="Email" />
                         </span>
                     </div>
                     <div class="field">
                         <span class="ui-float-label">
                             <p:inputText id="senha" 
-                                         value="#{loginController.pessoa.senha}" 
+                                         value="#{loginController.pessoaCadastro.senha}" 
                                          type="password" 
-                                         style="width: 350px"/>
-                            <!--<p:outputLabel for="@previous" value="Senha" />-->
+                                         style="width: 350px"
+                                         />
+                            <p:outputLabel for="@previous" value="Senha" />
                         </span>
                         <br />
-                        <p:commandButton value="Acessar" 
+                        <p:commandButton value="Cadastrar" 
                                          update="@form" 
-                                         action="#{loginController.autenticar()}" 
-                                         style="width: 350px"/>
-                        <p:divider align="center" type="dashed" style="width: 360px;">
-                            <h:link outcome="registrar" 
-                                    value="Clique aqui para registrar" 
-                                    style="color: black;"/>
-                        </p:divider>
+                                         action="#{loginController.cadastrarUsuario()}" 
+                                         style="width: 350px"
+                                         />
                     </div>
                 </h:panelGroup>
-
-                <h:panelGroup rendered="#{loginController.usuarioLogado()}">
-                    <h:outputText value="Bem-vindo!" />
-                    <br />
-                    <br />
-                    <p:commandButton value="Logout" 
-                                     update="@form" 
-                                     action="#{loginController.logout()}" /> 
-                </h:panelGroup>
             </div>
-
         </h:form>
 
         <!--            </ui:define>-->

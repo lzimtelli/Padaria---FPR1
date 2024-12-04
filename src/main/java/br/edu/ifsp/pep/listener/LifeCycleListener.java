@@ -24,6 +24,17 @@ public class LifeCycleListener implements PhaseListener {
         String pagina = ctx.getViewRoot().getViewId();
         System.out.println("Pagina " + pagina);
 
+        // ao clicar em meu perfil no index
+        // se o usuario ta logado -> vai para meu perfil
+        // se nao estiver logado -> vai para o login
+        if(pagina.equals("/pessoa/meuPerfil.xhtml")){
+            if(loginController.getPessoaAutenticada() != null){
+                System.out.println("autenticado");
+            } else {
+                redirecionar(ctx, "/login/login.xhtml");
+            }
+        }
+        
 //        if(pagina.equals("/pessoa/ListPessoa.xhtml")){
 //            if(loginController.getPessoaAutenticada() == null){
 //                // redirecionar para pagina de erro ou login
@@ -42,8 +53,8 @@ public class LifeCycleListener implements PhaseListener {
 //                }
 //            }
 //        }
-        
-        // FINANCEIRO CREATE
+//        
+//        // FINANCEIRO CREATE
 //        if(pagina.equals("/financeiro/create.xhtml")){
 //            if(loginController.getPessoaAutenticada() == null){
 //                redirecionar(ctx, "/erro.xhtml");
@@ -53,8 +64,8 @@ public class LifeCycleListener implements PhaseListener {
 //                }
 //            }
 //        }
-        
-        // FINANCEIRO LIST
+//        
+//        // FINANCEIRO LIST
 //        if(pagina.equals("/financeiro/list.xhtml")){
 //            if(loginController.getPessoaAutenticada() == null){
 //                redirecionar(ctx, "/erro.xhtml");
@@ -65,8 +76,8 @@ public class LifeCycleListener implements PhaseListener {
 //                }
 //            }
 //        }
-        
-        // PESSOA
+//        
+//        // PESSOA
 //        if(pagina.equals("/pessoa/ListPessoa.xhtml")){
 //            if(loginController.getPessoaAutenticada() == null){
 //                redirecionar(ctx, "/login/login.xhtml");
@@ -76,8 +87,8 @@ public class LifeCycleListener implements PhaseListener {
 //                }
 //            }
 //        }
-        
-        // VEICULO
+//        
+//        // VEICULO
 //        if(pagina.equals("/veiculo/ListVeiculo.xhtml")){
 //            if(loginController.getPessoaAutenticada() == null){
 //                redirecionar(ctx, "/login/login.xhtml");
