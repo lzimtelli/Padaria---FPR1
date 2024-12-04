@@ -7,13 +7,14 @@ body {
 }
 
 h1 {
-    font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif, Baskerville,Baskerville Old Face,Hoefler Text,Garamond,Times New Roman,serif;
+    font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif, serif;
 /*    border-bottom: 1px solid #AFAFAF; */
-    font-size:  50px;
-    font-weight: bold;
+    font-size:  40px;
+/*    font-weight: bold;*/
     margin: 0px;
     padding: 0px;
-    color: black;
+/*    color: #D20005;*/
+
 }
 
 a:link, a:visited {

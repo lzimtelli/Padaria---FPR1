@@ -1,14 +1,32 @@
-D:\Faculdade\Codigos\4 semestre\Projeto Integrado\src\main\java\br\edu\ifsp\pep\entity\Pessoa.java
-D:\Faculdade\Codigos\4 semestre\Projeto Integrado\src\main\java\br\edu\ifsp\pep\entity\Veiculo.java
-D:\Faculdade\Codigos\4 semestre\Projeto Integrado\src\main\java\br\edu\ifsp\pep\controller\LoginController.java
-D:\Faculdade\Codigos\4 semestre\Projeto Integrado\src\main\java\br\edu\ifsp\pep\listener\LifeCycleListener.java
-D:\Faculdade\Codigos\4 semestre\Projeto Integrado\src\main\java\br\edu\ifsp\pep\entity\TipoVeiculo.java
-D:\Faculdade\Codigos\4 semestre\Projeto Integrado\src\main\java\br\edu\ifsp\pep\entity\StatusVeiculo.java
-D:\Faculdade\Codigos\4 semestre\Projeto Integrado\src\main\java\br\edu\ifsp\pep\dao\VeiculoDAO.java
-D:\Faculdade\Codigos\4 semestre\Projeto Integrado\src\main\java\br\edu\ifsp\pep\Teste.java
-D:\Faculdade\Codigos\4 semestre\Projeto Integrado\src\main\java\br\edu\ifsp\pep\controller\VeiculoController.java
-D:\Faculdade\Codigos\4 semestre\Projeto Integrado\src\main\java\br\edu\ifsp\pep\dao\AbstractDAO.java
-D:\Faculdade\Codigos\4 semestre\Projeto Integrado\src\main\java\br\edu\ifsp\pep\util\Mensagem.java
-D:\Faculdade\Codigos\4 semestre\Projeto Integrado\src\main\java\br\edu\ifsp\pep\entity\NivelAcesso.java
-D:\Faculdade\Codigos\4 semestre\Projeto Integrado\src\main\java\br\edu\ifsp\pep\controller\PessoaController.java
-D:\Faculdade\Codigos\4 semestre\Projeto Integrado\src\main\java\br\edu\ifsp\pep\dao\PessoaDAO.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\ItemCompra.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Produto.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\VendaDAO.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Pessoa.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\ForncedorDAO.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\PessoaDAO.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\ItemCarrinhoDAO.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Venda.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Fornecedor.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\ItemCarrinhoPK.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\controller\PessoaController.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\CategoriaDAO.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Carrinho.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\ItemVenda.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\listener\LifeCycleListener.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\controller\LoginController.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\ItemCompraDAO.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\controller\CategoriaController.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\ItemVendaPK.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\ClienteDAO.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\EnderecoDAO.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\AbstractDAO.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\ItemCarrinho.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Compra.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\NivelAcesso.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\CarrinhoDAO.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Cliente.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\util\Mensagem.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Categoria.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\CompraDAO.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Endereco.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\ItemCompraPK.java

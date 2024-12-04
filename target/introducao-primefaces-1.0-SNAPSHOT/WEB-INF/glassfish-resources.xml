@@ -7,8 +7,8 @@
         <property name="databaseName" value="db_padaria"/>
         <property name="User" value="root"/>
         <property name="Password" value="Leo19042005"/>
-        <property name="URL" value="jdbc:mysql://localhost:3306/db_aula?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;createDatabaseIfNotExist=true&amp;serverTimezone=UTC&amp;serverTimezone=America/Sao_Paulo"/>
+        <property name="URL" value="jdbc:mysql://localhost:3306/db_padaria?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;createDatabaseIfNotExist=true&amp;serverTimezone=UTC&amp;serverTimezone=America/Sao_Paulo"/>
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
     </jdbc-connection-pool>
-    <jdbc-resource enabled="true" jndi-name="java:app/jdbcCasa" object-type="user" pool-name="mysql_mysql_rootPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/teste" object-type="user" pool-name="mysql_mysql_rootPool"/>
 </resources>
