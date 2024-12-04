@@ -2,12 +2,27 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="/WEB-INF/template.xhtml">
+                template="/WEB-INF/template.xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:p="primefaces">
 
     <ui:define name="content">
-        <h1>Descubra os sabores autênticos da Padaria Familiar</h1>
-        <img src="https://blog.dipratos.com.br/wp-content/themes/yootheme/cache/7d/tipos-de-padaria-7d78eb1e.webp" 
+        
+        <div align="center" style="margin-top: 70px;">
+            <h1 style="font-family: Arial; font-size: 50px;">Descubra os sabores autênticos da Padaria Familiar</h1>
+        </div>
+        
+        <div align="center" style="margin-top: 70px;">
+            <h:form>
+                <p:commandButton type="button" value="Primary"/>
+                <p:commandButton type="button" value="Secundary"/>
+            </h:form>
+        </div>
+        
+        <div align="left" style="margin-top: 70px;">
+            <img src="https://blog.dipratos.com.br/wp-content/themes/yootheme/cache/7d/tipos-de-padaria-7d78eb1e.webp" 
              height="500px" />
+        </div>
     </ui:define>
 
 </ui:composition>
