@@ -13,7 +13,7 @@
     <!-- <h:outputStylesheet name="/css/default.css" /> -->
     <!-- <h:outputStylesheet name="/css/cssLayout.css" /> -->
     <h:outputStylesheet name="/css/normalize.css" />
-    <h:outputStylesheet name="/css/style.css" />
+    <h:outputStylesheet name="/css/admin/style.css" />
 
     <link
       rel="stylesheet"
@@ -35,16 +35,39 @@
         styleClass="padariaHeader"
       ></h:link>
       <div class="headerEnd">
-        <a href="#">Comprar</a>
-        <h:link outcome="/sobrenos" value="Quem Somos"></h:link>
-        <a href="#">Meu Perfil</a>
-        <a href="#" class="btn-header"><div>Carrinho</div></a>
+        <a href="#">Manutenção</a>
+        <a href="#" class="btn-header"><div>Logout</div></a>
       </div>
     </div>
 
-    <div>
-      <div id="content" class="center_content">
-        <ui:insert name="content"></ui:insert>
+    <div class="container">
+      <div class="teste">
+        <p:menu>
+          <p:submenu label="Manutenção">
+            <!-- <p:menuitem
+              value="Save (Non-Ajax)"
+              action="#{menuView.save}"
+              update="messages"
+              ajax="false"
+              icon="pi pi-save"
+            /> -->
+            <p:menuitem
+              value="Categorias"
+              action="#{menuView.update}"
+              update="messages"
+              icon="pi pi-tag"
+            />
+            <p:menuitem
+              value="Logout (disabled)"
+              icon="pi pi-power-off"
+              disabled="true"
+            />
+          </p:submenu>
+        </p:menu>
+
+        <div id="content" class="content">
+          <ui:insert name="content"></ui:insert>
+        </div>
       </div>
     </div>
 
