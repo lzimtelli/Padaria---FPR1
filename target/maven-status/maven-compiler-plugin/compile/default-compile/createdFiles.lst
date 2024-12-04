@@ -27,7 +27,6 @@ br\edu\ifsp\pep\controller\PessoaController.class
 br\edu\ifsp\pep\entity\ItemCompra.class
 br\edu\ifsp\pep\entity\Fornecedor.class
 br\edu\ifsp\pep\entity\ItemCarrinho.class
-br\edu\ifsp\pep\Teste.class
 br\edu\ifsp\pep\dao\CompraDAO.class
 br\edu\ifsp\pep\util\Mensagem.class
 br\edu\ifsp\pep\dao\AbstractDAO.class
