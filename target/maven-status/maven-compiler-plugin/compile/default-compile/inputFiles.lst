@@ -1,49 +1,33 @@
-<<<<<<< HEAD
-/home/aluno/LEOM/Padaria - FPR1/padaria-main/src/main/java/br/edu/ifsp/pep/Teste.java
-/home/aluno/LEOM/Padaria - FPR1/padaria-main/src/main/java/br/edu/ifsp/pep/controller/VeiculoController.java
-/home/aluno/LEOM/Padaria - FPR1/padaria-main/src/main/java/br/edu/ifsp/pep/controller/PessoaController.java
-/home/aluno/LEOM/Padaria - FPR1/padaria-main/src/main/java/br/edu/ifsp/pep/entity/NivelAcesso.java
-/home/aluno/LEOM/Padaria - FPR1/padaria-main/src/main/java/br/edu/ifsp/pep/entity/Veiculo.java
-/home/aluno/LEOM/Padaria - FPR1/padaria-main/src/main/java/br/edu/ifsp/pep/util/Mensagem.java
-/home/aluno/LEOM/Padaria - FPR1/padaria-main/src/main/java/br/edu/ifsp/pep/dao/PessoaDAO.java
-/home/aluno/LEOM/Padaria - FPR1/padaria-main/src/main/java/br/edu/ifsp/pep/listener/LifeCycleListener.java
-/home/aluno/LEOM/Padaria - FPR1/padaria-main/src/main/java/br/edu/ifsp/pep/entity/StatusVeiculo.java
-/home/aluno/LEOM/Padaria - FPR1/padaria-main/src/main/java/br/edu/ifsp/pep/dao/AbstractDAO.java
-/home/aluno/LEOM/Padaria - FPR1/padaria-main/src/main/java/br/edu/ifsp/pep/controller/LoginController.java
-/home/aluno/LEOM/Padaria - FPR1/padaria-main/src/main/java/br/edu/ifsp/pep/dao/VeiculoDAO.java
-/home/aluno/LEOM/Padaria - FPR1/padaria-main/src/main/java/br/edu/ifsp/pep/entity/TipoVeiculo.java
-/home/aluno/LEOM/Padaria - FPR1/padaria-main/src/main/java/br/edu/ifsp/pep/entity/Pessoa.java
-=======
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\VendaDAO.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\ItemCarrinho.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\AbstractDAO.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Pessoa.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\controller\LoginController.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\Teste.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Endereco.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\PessoaDAO.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\ItemVenda.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Venda.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\util\Mensagem.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\ClienteDAO.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\ItemCompra.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\ItemCompraDAO.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Cliente.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Carrinho.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\controller\PessoaController.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\CategoriaDAO.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\NivelAcesso.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\listener\LifeCycleListener.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\ForncedorDAO.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Fornecedor.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Produto.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\CarrinhoDAO.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\ItemCompraPK.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\CompraDAO.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\ItemVendaPK.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\ItemCarrinhoPK.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Compra.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\ItemCarrinhoDAO.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Categoria.java
-C:\Users\User\Desktop\Gabriel Facul\4 bimestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\EnderecoDAO.java
->>>>>>> 4f15058b475f0210732dc3ad5ae57b19bf483438
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\ItemCarrinhoPK.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\VendaDAO.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Compra.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Venda.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Carrinho.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Cliente.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\ItemVendaPK.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\ItemCarrinhoDAO.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\CategoriaDAO.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\util\Mensagem.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\ItemCompraDAO.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\ClienteDAO.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\ItemCompraPK.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Pessoa.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\ItemCarrinho.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Produto.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\ItemVenda.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\PessoaDAO.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\EnderecoDAO.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\controller\CategoriaController.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\CompraDAO.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\CarrinhoDAO.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\ItemCompra.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\AbstractDAO.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\NivelAcesso.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Categoria.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\Teste.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\controller\PessoaController.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Endereco.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\controller\LoginController.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\ForncedorDAO.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\listener\LifeCycleListener.java
+C:\Users\jorge\OneDrive\Documentos\facul\leo-biel-jorg\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Fornecedor.java
