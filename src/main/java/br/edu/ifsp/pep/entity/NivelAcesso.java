@@ -9,5 +9,5 @@ package br.edu.ifsp.pep.entity;
  * @author aluno
  */
 public enum NivelAcesso {
-   Administrador, Usuario, Funcionario
+   Administrador, Financeiro, Comum 
 }
