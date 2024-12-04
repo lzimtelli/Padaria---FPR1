@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 
@@ -16,16 +18,20 @@ import java.io.Serializable;
  *
  * @author User
  */
+@NamedQueries({
+    @NamedQuery(name = "Categoria.buscaTodas", query = "SELECT c FROM Categoria c")
+})
+
 @Entity
 @Table(name = "categoria")
-public class Categoria implements Serializable{
- 
+public class Categoria implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_categoria")
     private int idCategoria;
-    
-    @Column(nullable = false,length = 30)
+
+    @Column(nullable = false, length = 30, name = "descricao")
     private String descricao;
 
     public int getIdCategoria() {
@@ -65,6 +71,5 @@ public class Categoria implements Serializable{
         final Categoria other = (Categoria) obj;
         return this.idCategoria == other.idCategoria;
     }
-    
-    
+
 }

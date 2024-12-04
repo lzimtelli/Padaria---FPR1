@@ -11,6 +11,8 @@ import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,6 +28,7 @@ public class CategoriaController implements Serializable {
 
     private Categoria categoria = new Categoria();
     private Categoria categoriaSelecionada;
+
     private List<Categoria> categorias;
 
     public void remover() {
@@ -39,10 +42,10 @@ public class CategoriaController implements Serializable {
             Mensagem.atencao("Selecione umca categoria.");
         }
     }
-    
-    public void prepararCadastro(){
-        
-        
+
+    public void prepararCadastro() {
+        System.out.println("teste");
+        System.out.println(categorias.size());
     }
 
     public String adicionar() {
@@ -84,6 +87,9 @@ public class CategoriaController implements Serializable {
     }
 
     public List<Categoria> getCategorias() {
+        if (categorias == null) {
+            categorias = categoriaDAO.buscarTodas();
+        }
         return categorias;
     }
 
