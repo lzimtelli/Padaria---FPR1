@@ -5,6 +5,7 @@
   xmlns="http://www.w3.org/1999/xhtml"
   xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
   xmlns:h="jakarta.faces.html"
+  xmlns:f="jakarta.faces.core"
   xmlns:p="primefaces"
 >
   <ui:define name="content2">
@@ -17,14 +18,14 @@
         <p:commandButton
           value="New"
           icon="pi pi-plus"
-          actionListener="#{crudView.openNew}"
-          oncomplete="PF('manageProductDialog').show()"
+          actionListener="#{categoriaController.prepararCadastro()}"
           styleClass="ui-button-success"
           style="margin-right: 0.5rem"
+          update=":dialogs:manage-product-content"
+          oncomplete="PF('manageProductDialog').show()"
         >
         </p:commandButton>
         <p:commandButton
-          id="delete-products-button1"
           value="#{crudView.deleteButtonMessage}"
           icon="pi pi-pencil"
           actionListener="#{crudView.deleteSelectedProducts}"
@@ -34,7 +35,6 @@
         >
         </p:commandButton>
         <p:commandButton
-          id="delete-products-button"
           value="#{crudView.deleteButtonMessage}"
           icon="pi pi-trash"
           actionListener="#{crudView.deleteSelectedProducts}"
@@ -54,85 +54,214 @@
     <div class="table ui-g">
       <div class="table-categoria ui-g-3">
         <h:form id="form1">
+          <!-- filteredValue="#{dtFilterView.filteredCustomers1}" -->
+          <!-- emptyMessage="Não foi encontrado categoria com esse nome" -->
+
           <p:dataTable
+            id="tabela"
+            value="#{categoriaController.categorias}"
+            var="item"
+            rowKey="#{item.idCategoria}"
+            selection="#{categoriaController.categoriaSelecionada}"
+            selectionMode="single"
             scrollable="true"
             scrollHeight="400"
             resizeMode="expand"
             size="small"
-            id="categoria"
-            var="categoria"
-            value="#{dtContextMenuView.categoria}"
-            rowKey="#{categoria.id}"
-            selection="#{dtContextMenuView.selectedcategoria}"
-            selectionMode="single"
-            emptyMessage="No customers found with given criteria"
-            filteredValue="#{dtFilterView.filteredCustomers1}"
             showGridlines="true"
           >
+            <!--filterMatchMode="contains"-->
+
             <p:column
               headerText="Nome"
-              sortBy="#{customer.name}"
-              filterBy="#{customer.name}"
-              filterMatchMode="contains"
+              sortBy="#{item.descricao}"
+              filterBy="#{item.descricao}"
               colspan="6"
             >
-              <h:outputText value="#{product.name}" />
+              <h:outputText value="#{item.descricao}" />
             </p:column>
           </p:dataTable>
         </h:form>
       </div>
 
-      <div class="table-products ui-g-9">
-        <h1>Produtos</h1>
-        <h:form id="form2">
-          <p:dataTable
-            size="small"
-            id="products"
-            var="product"
-            value="#{dtContextMenuView.products}"
-            rowKey="#{product.id}"
-            selection="#{dtContextMenuView.selectedProduct}"
-            selectionMode="single"
-            emptyMessage="No customers found with given criteria"
-            filteredValue="#{dtFilterView.filteredCustomers1}"
-            showGridlines="true"
-          >
-            <p:column
-              headerText="Descrição"
-              sortBy="#{customer.name}"
-              filterBy="#{customer.name}"
-              filterMatchMode="contains"
-              colspan="4"
-            >
-              <h:outputText value="#{product.name}" />
-            </p:column>
-            <p:column
-              headerText="Quantidade"
-              sortBy="#{customer.name}"
-              filterBy="#{customer.name}"
-              filterMatchMode="contains"
-            >
-              <h:outputText value="#{product.name}" />
-            </p:column>
-            <p:column
-              headerText="Valor Compra"
-              sortBy="#{customer.name}"
-              filterBy="#{customer.name}"
-              filterMatchMode="contains"
-            >
-              <h:outputText value="#{product.name}" />
-            </p:column>
-            <p:column
-              headerText="Valor Venda"
-              sortBy="#{customer.name}"
-              filterBy="#{customer.name}"
-              filterMatchMode="contains"
-            >
-              <h:outputText value="#{product.name}" />
-            </p:column>
-          </p:dataTable>
-        </h:form>
-      </div>
+      <!-- <div class="table-products ui-g-9">
+              <h1>Produtos</h1>
+              <h:form id="form2">
+                <p:dataTable
+                  size="small"
+                  id="products"
+                  var="product"
+                  value="#{dtContextMenuView.products}"
+                  rowKey="#{product.id}"
+                  selection="#{dtContextMenuView.selectedProduct}"
+                  selectionMode="single"
+                  emptyMessage="No customers found with given criteria"
+                  filteredValue="#{dtFilterView.filteredCustomers1}"
+                  showGridlines="true"
+                >
+                  <p:column
+                    headerText="Descrição"
+                    sortBy="#{customer.name}"
+                    filterBy="#{customer.name}"
+                    filterMatchMode="contains"
+                    colspan="4"
+                  >
+                    <h:outputText value="#{product.name}" />
+                  </p:column>
+                  <p:column
+                    headerText="Quantidade"
+                    sortBy="#{customer.name}"
+                    filterBy="#{customer.name}"
+                    filterMatchMode="contains"
+                  >
+                    <h:outputText value="#{product.name}" />
+                  </p:column>
+                  <p:column
+                    headerText="Valor Compra"
+                    sortBy="#{customer.name}"
+                    filterBy="#{customer.name}"
+                    filterMatchMode="contains"
+                  >
+                    <h:outputText value="#{product.name}" />
+                  </p:column>
+                  <p:column
+                    headerText="Valor Venda"
+                    sortBy="#{customer.name}"
+                    filterBy="#{customer.name}"
+                    filterMatchMode="contains"
+                  >
+                    <h:outputText value="#{product.name}" />
+                  </p:column>
+                </p:dataTable>
+              </h:form>
+            </div> -->
     </div>
+
+    <h:form id="dialogs">
+      <p:dialog
+        header="Product Details"
+        showEffect="fade"
+        modal="true"
+        widgetVar="manageProductDialog"
+        responsive="true"
+      >
+        <p:outputPanel id="manage-product-content" class="ui-fluid">
+          <p:outputPanel>
+            <p:graphicImage
+              name="images/product/#{crudView.selectedProduct.image}"
+              library="demo"
+              styleClass="product-image"
+              rendered="#{not empty crudView.selectedProduct.image}"
+            />
+            <div class="field">
+              <p:outputLabel for="name">Name</p:outputLabel>
+              <p:inputText
+                id="name"
+                value="#{crudView.selectedProduct.name}"
+                required="true"
+              />
+            </div>
+            <div class="field">
+              <p:outputLabel for="description">Description</p:outputLabel>
+              <p:inputTextarea
+                id="description"
+                value="#{crudView.selectedProduct.description}"
+              />
+            </div>
+            <div class="field">
+              <p:outputLabel for="category">Category</p:outputLabel>
+              <p:selectOneRadio
+                id="category"
+                value="#{crudView.selectedProduct.category}"
+                layout="responsive"
+                columns="2"
+              >
+                <f:selectItem itemLabel="Accessories" itemValue="Accessories" />
+                <f:selectItem itemLabel="Clothing" itemValue="Clothing" />
+                <f:selectItem itemLabel="Electronics" itemValue="Electronics" />
+                <f:selectItem itemLabel="Fitness" itemValue="Fitness" />
+              </p:selectOneRadio>
+            </div>
+            <div class="formgrid grid">
+              <div class="field col">
+                <p:outputLabel for="price">Price</p:outputLabel>
+                <p:inputNumber
+                  id="price"
+                  value="#{crudView.selectedProduct.price}"
+                  symbol=" USD"
+                  symbolPosition="s"
+                  decimalSeparator="."
+                  thousandSeparator=","
+                />
+              </div>
+              <div class="field col">
+                <p:outputLabel for="quantity">Quantity</p:outputLabel>
+                <p:spinner
+                  id="quantity"
+                  min="0"
+                  value="#{crudView.selectedProduct.quantity}"
+                />
+              </div>
+            </div>
+          </p:outputPanel>
+        </p:outputPanel>
+
+        <f:facet name="footer">
+          <p:commandButton
+            value="Save"
+            icon="pi pi-check"
+            actionListener="#{crudView.saveProduct}"
+            update="manage-product-content"
+            process="manage-product-content @this"
+          />
+          <p:commandButton
+            value="Cancel"
+            icon="pi pi-times"
+            onclick="PF('manageProductDialog').hide()"
+            class="ui-button-secondary"
+            type="button"
+          />
+        </f:facet>
+      </p:dialog>
+
+      <p:confirmDialog
+        widgetVar="deleteProductDialog"
+        showEffect="fade"
+        width="300"
+        message="Delete the product?"
+        header="Confirm"
+        severity="warn"
+      >
+        <p:commandButton
+          value="Yes"
+          icon="pi pi-check"
+          actionListener="#{crudView.deleteProduct}"
+          process="@this"
+          oncomplete="PF('deleteProductDialog').hide()"
+        />
+        <p:commandButton
+          value="No"
+          type="button"
+          styleClass="ui-button-secondary"
+          icon="pi pi-times"
+          onclick="PF('deleteProductDialog').hide()"
+        />
+      </p:confirmDialog>
+
+      <p:confirmDialog global="true" showEffect="fade" width="300">
+        <p:commandButton
+          value="Yes"
+          type="button"
+          styleClass="ui-confirmdialog-yes"
+          icon="pi pi-check"
+        />
+        <p:commandButton
+          value="No"
+          type="button"
+          styleClass="ui-confirmdialog-no ui-button-secondary"
+          icon="pi pi-times"
+        />
+      </p:confirmDialog>
+    </h:form>
   </ui:define>
 </ui:composition>

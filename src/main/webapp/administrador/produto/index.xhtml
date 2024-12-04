@@ -33,6 +33,17 @@
           style="margin-right: 0.5rem"
         >
         </p:commandButton>
+
+        <p:commandButton
+          id="delete-products-button1"
+          value="#{crudView.deleteButtonMessage}"
+          icon="pi pi-eye"
+          actionListener="#{crudView.deleteSelectedProducts}"
+          styleClass="ui-button-secundary"
+          disabled="#{!crudView.hasSelectedProducts()}"
+          style="margin-right: 0.5rem"
+        >
+        </p:commandButton>
         <p:commandButton
           id="delete-products-button"
           value="#{crudView.deleteButtonMessage}"
@@ -53,7 +64,6 @@
 
     <div class="table ui-g">
       <div class="table-products">
-        <h1>Produtos</h1>
         <h:form id="form2">
           <p:dataTable
             size="small"
