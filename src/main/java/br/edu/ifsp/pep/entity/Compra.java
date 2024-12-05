@@ -4,6 +4,7 @@
  */
 package br.edu.ifsp.pep.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,6 +14,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -40,16 +42,20 @@ public class Compra implements Serializable {
     @JoinColumn(name = "id_fornecedor", referencedColumnName = "id_fornecedor", nullable = false)
     private Fornecedor fornecedor;
 
-    private List<ItemCompra> itemCompras;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "compra",orphanRemoval = true)
+    private List<ItemCompra> itensCompra;
 
     @Column(name = "forma_pagamento", nullable = false, length = 20)
     private String formaPagamento;
 
     @Column(nullable = true)
     private Double desconto;
-    
-    @Column(name = "data_compra",nullable = false)
+
+    @Column(name = "data_compra", nullable = false)
     private LocalDate dataCompra;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "compra")
+    private List<ItemCompra> itens;
 
     public Compra() {
     }
@@ -57,7 +63,7 @@ public class Compra implements Serializable {
     public Compra(Long idCompra, Fornecedor fornecedor, List<ItemCompra> itemCompras, String formaPagamento, Double desconto) {
         this.idCompra = idCompra;
         this.fornecedor = fornecedor;
-        this.itemCompras = itemCompras;
+        this.itensCompra = itemCompras;
         this.formaPagamento = formaPagamento;
         this.desconto = desconto;
     }
@@ -78,13 +84,15 @@ public class Compra implements Serializable {
         this.fornecedor = fornecedor;
     }
 
-    public List<ItemCompra> getItemCompras() {
-        return itemCompras;
+    public List<ItemCompra> getItensCompra() {
+        return itensCompra;
     }
 
-    public void setItemCompras(List<ItemCompra> itemCompras) {
-        this.itemCompras = itemCompras;
+    public void setItensCompra(List<ItemCompra> itensCompra) {
+        this.itensCompra = itensCompra;
     }
+
+   
 
     public String getFormaPagamento() {
         return formaPagamento;
@@ -100,6 +108,22 @@ public class Compra implements Serializable {
 
     public void setDesconto(Double desconto) {
         this.desconto = desconto;
+    }
+
+    public LocalDate getDataCompra() {
+        return dataCompra;
+    }
+
+    public void setDataCompra(LocalDate dataCompra) {
+        this.dataCompra = dataCompra;
+    }
+
+    public List<ItemCompra> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<ItemCompra> itens) {
+        this.itens = itens;
     }
 
     @Override

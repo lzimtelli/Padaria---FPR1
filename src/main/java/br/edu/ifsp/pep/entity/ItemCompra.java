@@ -6,10 +6,13 @@ package br.edu.ifsp.pep.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -18,34 +21,27 @@ import java.time.LocalDate;
  *
  * @author User
  */
+@Entity
 @Table(name = "item_compra")
 @IdClass(ItemCompraPK.class)
-public class ItemCompra implements Serializable{
+public class ItemCompra implements Serializable {
+
+    @Id   
+    @JoinColumn(name = "id_produto", referencedColumnName = "id_produto", nullable = false)
+    @ManyToOne(optional = false)
+    private Produto produto;
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idItemCompra;
-    
-    @Id
+    @JoinColumn(name = "id_compra", referencedColumnName = "id_compra", nullable = false)
+    @ManyToOne(optional = false)
     private Compra compra;
-    
-    @Column(name = "data_compra",nullable = false)
+
+    @Column(name = "data_compra", nullable = false)
     private LocalDate dataCompra;
-    
-    @Column(nullable = false)
-    private Fornecedor fornecedor;
-    
-    @Column(name = "desconto",nullable = true)
+
+    @Column(name = "desconto", nullable = true)
     private Double desconto;
-
-    public int getIdItemCompra() {
-        return idItemCompra;
-    }
-
-    public void setIdItemCompra(int idItemCompra) {
-        this.idItemCompra = idItemCompra;
-    }
-
+    
     public Compra getCompra() {
         return compra;
     }
@@ -62,14 +58,7 @@ public class ItemCompra implements Serializable{
         this.dataCompra = dataCompra;
     }
 
-    public Fornecedor getFornecedor() {
-        return fornecedor;
-    }
-
-    public void setFornecedor(Fornecedor fornecedor) {
-        this.fornecedor = fornecedor;
-    }
-
+ 
     public Double getDesconto() {
         return desconto;
     }
@@ -77,6 +66,5 @@ public class ItemCompra implements Serializable{
     public void setDesconto(Double desconto) {
         this.desconto = desconto;
     }
-    
-    
+
 }

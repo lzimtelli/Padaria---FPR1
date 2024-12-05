@@ -15,22 +15,37 @@ import java.util.Objects;
 @Embeddable
 public class ItemCompraPK implements Serializable{
     
-    private int idItemCompra;
-    private Long idVenda;
+    private Long compra;
+    private Long produto;
 
-    public int getIdItemCompra() {
-        return idItemCompra;
+    public ItemCompraPK() {}
+
+    public ItemCompraPK(Long compra, Long produto) {
+        this.compra = compra;
+        this.produto = produto;
+    }
+    
+    public Long getCompra() {
+        return compra;
     }
 
-    public void setIdItemCompra(int idItemCompra) {
-        this.idItemCompra = idItemCompra;
+    public void setCompra(Long compra) {
+        this.compra = compra;
+    }
+
+    public Long getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Long produto) {
+        this.produto = produto;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 41 * hash + this.idItemCompra;
-        hash = 41 * hash + Objects.hashCode(this.idVenda);
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.compra);
+        hash = 29 * hash + Objects.hashCode(this.produto);
         return hash;
     }
 
@@ -46,19 +61,16 @@ public class ItemCompraPK implements Serializable{
             return false;
         }
         final ItemCompraPK other = (ItemCompraPK) obj;
-        if (this.idItemCompra != other.idItemCompra) {
+        if (!Objects.equals(this.compra, other.compra)) {
             return false;
         }
-        return Objects.equals(this.idVenda, other.idVenda);
+        return Objects.equals(this.produto, other.produto);
     }
 
-    public Long getIdVenda() {
-        return idVenda;
-    }
+   
 
-    public void setIdVenda(Long idVenda) {
-        this.idVenda = idVenda;
-    }
-    
+   
+
+ 
     
 }
