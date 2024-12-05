@@ -6,6 +6,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "carrinho")
+@NamedQueries({
+    @NamedQuery(name = "Carrinho.buscaAberto", query = "SELECT c FROM Carrinho c WHERE c.pessoa = :pessoa")
+})
 public class Carrinho implements Serializable {
 
     @Id
@@ -14,12 +17,12 @@ public class Carrinho implements Serializable {
     private Long idCarrinho;
 
     @ManyToOne
-    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", nullable = false)
-    private Cliente cliente;
+    @JoinColumn(name = "id_pessoa", referencedColumnName = "id_cliente", nullable = false)
+    private Pessoa pessoa;
 
     @OneToMany(mappedBy = "carrinho", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemCarrinho> itemCarrinhos;
-
+    
     // Getters e setters
     public Long getIdCarrinho() {
         return idCarrinho;
@@ -29,12 +32,12 @@ public class Carrinho implements Serializable {
         this.idCarrinho = idCarrinho;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Pessoa getPessoa() {
+        return pessoa;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
     public List<ItemCarrinho> getItemCarrinhos() {

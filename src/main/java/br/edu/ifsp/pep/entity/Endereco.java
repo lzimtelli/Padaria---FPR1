@@ -9,6 +9,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 
@@ -18,7 +22,10 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "endereco")
-public class Endereco implements Serializable{
+@NamedQueries({
+    @NamedQuery(name = "Endereco.buscaPorUsuario", query = "SELECT e FROM Endereco e WHERE e.pessoa = :pessoa"),
+})
+public class Endereco implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +34,10 @@ public class Endereco implements Serializable{
 
     //necessario colocar o cliente aqui
     //verificar como será feito cliente / usuario
-    
+    @ManyToOne
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", nullable = false)
+    private Pessoa pessoa;
+
     @Column(nullable = false, length = 50)
     private String cidade;
 
@@ -42,7 +52,5 @@ public class Endereco implements Serializable{
 
     @Column(nullable = false)
     private int numero;
-    
-    
 
 }

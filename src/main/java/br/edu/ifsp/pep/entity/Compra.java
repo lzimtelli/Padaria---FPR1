@@ -11,8 +11,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,25 +25,31 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "compra")
-public class Compra implements Serializable{
-    
+@NamedQueries({
+    @NamedQuery(name = "Compra.buscaTodas", query = "FROM Compra c"),
+    @NamedQuery(name = "Compra.buscaPorFornecedor", query = "SELECT c FROM Compra c WHERE c.fornecedor = :fornecedor"),
+    @NamedQuery(name = "Compra.buscarPorData", query = "SELECT c FROM Compra c WHERE c.dataCompra BETWEEN :datainicio AND :datafim"),})
+public class Compra implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_compra")
     private Long idCompra;
-    
+
     @ManyToOne
-    @JoinColumn(name = "id_fornecedor",referencedColumnName = "id_fornecedor",nullable = false)
+    @JoinColumn(name = "id_fornecedor", referencedColumnName = "id_fornecedor", nullable = false)
     private Fornecedor fornecedor;
-    
-    
+
     private List<ItemCompra> itemCompras;
-    
-    @Column(name = "forma_pagamento",nullable = false,length = 20)
+
+    @Column(name = "forma_pagamento", nullable = false, length = 20)
     private String formaPagamento;
-   
+
     @Column(nullable = true)
     private Double desconto;
+    
+    @Column(name = "data_compra",nullable = false)
+    private LocalDate dataCompra;
 
     public Compra() {
     }
@@ -114,8 +123,5 @@ public class Compra implements Serializable{
         final Compra other = (Compra) obj;
         return Objects.equals(this.idCompra, other.idCompra);
     }
-    
-    
-    
-    
+
 }

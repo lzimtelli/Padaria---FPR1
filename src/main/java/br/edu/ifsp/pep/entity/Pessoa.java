@@ -11,6 +11,7 @@ import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "pessoa")
@@ -22,8 +23,8 @@ public class Pessoa implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "codigo")
-    private Integer codigo;
+    @Column(name = "id_pessoa")
+    private Integer idPessoa;
     
     @Column(name = "nome", length = 50, nullable = false)
     private String nome;
@@ -38,13 +39,15 @@ public class Pessoa implements Serializable {
     @Column(name = "nivel_acesso", nullable = false, length = 14)
     private NivelAcesso nivelAcesso;
 
-    public Integer getCodigo() {
-        return codigo;
+    public Integer getIdPessoa() {
+        return idPessoa;
     }
 
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
+    public void setIdPessoa(Integer idPessoa) {
+        this.idPessoa = idPessoa;
     }
+
+
 
     public String getNome() {
         return nome;
@@ -77,4 +80,28 @@ public class Pessoa implements Serializable {
     public void setNivelAcesso(NivelAcesso nivelAcesso) {
         this.nivelAcesso = nivelAcesso;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.idPessoa);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pessoa other = (Pessoa) obj;
+        return Objects.equals(this.idPessoa, other.idPessoa);
+    }
+    
+    
 }

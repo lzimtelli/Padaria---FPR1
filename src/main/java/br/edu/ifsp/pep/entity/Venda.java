@@ -9,11 +9,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  *
@@ -24,6 +28,7 @@ import java.time.LocalDate;
 @NamedQueries({
     @NamedQuery(name = "Venda.buscarTodas", query = "FROM Venda v"),
   //  @NamedQuery(name = "Venda.buscarPorData",  query = "FROM Venda v WHERE v.data BETWEEN :datainicio AND :datafim"),
+      @NamedQuery(name = "Venda.buscaPorUsuario",  query = "SELECT v FROM Venda v WHERE v.carrinho.pessoa = :pessoa"),
 })
 public class Venda implements Serializable{
     
@@ -36,7 +41,67 @@ public class Venda implements Serializable{
     
     @Column(name = "data_venda",nullable = false)
     private LocalDate dataVenda = LocalDate.now(); //verificar se é uma boa pratica
+   
+    @OneToOne
+    @JoinColumn(name = "id_carrinho",referencedColumnName = "id_carrinho",nullable = false)
+    private Carrinho carrinho; 
     
     @Column(nullable = true)
     private Double desconto;
+
+    public Long getIdVenda() {
+        return idVenda;
+    }
+
+    public void setIdVenda(Long idVenda) {
+        this.idVenda = idVenda;
+    }
+
+    public LocalDate getDataVenda() {
+        return dataVenda;
+    }
+
+    public void setDataVenda(LocalDate dataVenda) {
+        this.dataVenda = dataVenda;
+    }
+
+    public Carrinho getCarrinho() {
+        return carrinho;
+    }
+
+    public void setCarrinho(Carrinho carrinho) {
+        this.carrinho = carrinho;
+    }
+
+    public Double getDesconto() {
+        return desconto;
+    }
+
+    public void setDesconto(Double desconto) {
+        this.desconto = desconto;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 41 * hash + Objects.hashCode(this.idVenda);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Venda other = (Venda) obj;
+        return Objects.equals(this.idVenda, other.idVenda);
+    }
+    
+    
 }

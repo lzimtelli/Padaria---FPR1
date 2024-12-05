@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.Objects;
@@ -19,6 +21,11 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "fornecedor")
+@NamedQueries({
+    @NamedQuery(name = "Fornecedor.buscaTodos", query = "SELECT f FROM Fornecedor f"),
+    @NamedQuery(name = "Fornecedor.buscaPorNome", query = "SELECT f FROM Fornecedor f WHERE f.nomeFantasia LiKE :nome")
+     
+})
 public class Fornecedor implements Serializable{
  
     @Id

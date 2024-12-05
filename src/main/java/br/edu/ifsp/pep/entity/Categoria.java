@@ -18,12 +18,12 @@ import java.io.Serializable;
  *
  * @author User
  */
-@NamedQueries({
-    @NamedQuery(name = "Categoria.buscaTodas", query = "SELECT c FROM Categoria c")
-})
 
 @Entity
 @Table(name = "categoria")
+@NamedQueries({
+    @NamedQuery(name = "Categoria.buscaTodas", query = "SELECT c FROM Categoria c")
+})
 public class Categoria implements Serializable {
 
     @Id
