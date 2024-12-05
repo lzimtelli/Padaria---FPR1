@@ -6,6 +6,7 @@ package br.edu.ifsp.pep.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -21,21 +22,19 @@ import java.io.Serializable;
  *
  * @author User
  */
+@Entity
 @Table(name = "item_venda")
 @IdClass(ItemVendaPK.class)
 public class ItemVenda implements Serializable{
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_item")
-    private int idItemVenda;
+
     
     @Id
     @JoinColumn(name = "id_venda",referencedColumnName = "id_venda",nullable = false)
     @ManyToOne(optional = false)
-    private Venda idVenda;
+    private Venda venda;
     
 
+    @Id
     @JoinColumn(name = "produto_venda",referencedColumnName = "id_produto",nullable = false)
     @ManyToOne(optional = false)
     private Produto produtoVenda;
@@ -45,21 +44,14 @@ public class ItemVenda implements Serializable{
     @Column(name = "valor_unitario")
     private Double valorUnitario;
 
-    public int getIdItemVenda() {
-        return idItemVenda;
+    public Venda getVenda() {
+        return venda;
     }
 
-    public void setIdItemVenda(int idItemVenda) {
-        this.idItemVenda = idItemVenda;
+    public void setVenda(Venda venda) {
+        this.venda = venda;
     }
 
-    public Venda getIdVenda() {
-        return idVenda;
-    }
-
-    public void setIdVenda(Venda idVenda) {
-        this.idVenda = idVenda;
-    }
 
     public Produto getProdutoVenda() {
         return produtoVenda;
