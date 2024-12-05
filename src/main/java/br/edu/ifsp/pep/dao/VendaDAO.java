@@ -4,6 +4,7 @@
  */
 package br.edu.ifsp.pep.dao;
 
+import br.edu.ifsp.pep.entity.Pessoa;
 import br.edu.ifsp.pep.entity.Venda;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.TypedQuery;
@@ -30,4 +31,11 @@ public class VendaDAO extends AbstractDAO<Venda> {
 
         return query.getResultList();
     }
+    
+    public List<Venda>buscaPorUsuario(Pessoa pessoa){
+          TypedQuery<Venda> query = em.createNamedQuery("Venda.buscaPorUsuario", Venda.class);
+        query.setParameter("pessoa", pessoa);
+
+        return query.getResultList();   
+    } 
 }

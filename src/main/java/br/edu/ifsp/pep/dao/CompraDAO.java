@@ -5,7 +5,11 @@
 package br.edu.ifsp.pep.dao;
 
 import br.edu.ifsp.pep.entity.Compra;
+import br.edu.ifsp.pep.entity.Fornecedor;
 import jakarta.ejb.Stateless;
+import jakarta.persistence.TypedQuery;
+import java.time.LocalDate;
+import java.util.List;
 
 /**
  *
@@ -13,5 +17,25 @@ import jakarta.ejb.Stateless;
  */
 @Stateless
 public class CompraDAO extends AbstractDAO<Compra>{
+      
+    public List<Compra> buscarTodas() {
+        return em.createNamedQuery("Compra.buscaTodas", Compra.class)
+                .getResultList();
+
+    }
+
+    public List<Compra> buscarPorData(LocalDate dataInicio, LocalDate dataFim) {
+        TypedQuery<Compra> query = em.createNamedQuery("Compra.buscarPorData", Compra.class);
+        query.setParameter("datainicio", dataInicio);
+        query.setParameter("datafim", dataFim);
+
+        return query.getResultList();
+    }
     
+    public List<Compra>buscaPorFornecedor(Fornecedor fornecedor){
+          TypedQuery<Compra> query = em.createNamedQuery("Compra.buscaPorFornecedor", Compra.class);
+        query.setParameter("fornecedor", fornecedor);
+
+        return query.getResultList();   
+    } 
 }
