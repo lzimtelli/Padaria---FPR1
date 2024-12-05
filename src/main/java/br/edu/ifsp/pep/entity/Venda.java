@@ -4,6 +4,7 @@
  */
 package br.edu.ifsp.pep.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,10 +14,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -27,27 +30,29 @@ import java.util.Objects;
 @Table(name = "venda")
 @NamedQueries({
     @NamedQuery(name = "Venda.buscarTodas", query = "FROM Venda v"),
-  //  @NamedQuery(name = "Venda.buscarPorData",  query = "FROM Venda v WHERE v.data BETWEEN :datainicio AND :datafim"),
-      @NamedQuery(name = "Venda.buscaPorUsuario",  query = "SELECT v FROM Venda v WHERE v.carrinho.pessoa = :pessoa"),
-})
-public class Venda implements Serializable{
-    
+    //  @NamedQuery(name = "Venda.buscarPorData",  query = "FROM Venda v WHERE v.data BETWEEN :datainicio AND :datafim"),
+    @NamedQuery(name = "Venda.buscaPorUsuario", query = "SELECT v FROM Venda v WHERE v.pessoa = :pessoa"),})
+public class Venda implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_venda")
     private Long idVenda;
-    
+
     //colocar cliente 
-    
-    @Column(name = "data_venda",nullable = false)
-    private LocalDate dataVenda = LocalDate.now(); //verificar se é uma boa pratica
+      @ManyToOne
+    @JoinColumn(name = "id_pessoa", referencedColumnName = "id_pessoa", nullable = false)
+    private Pessoa pessoa;
+
    
-    @OneToOne
-    @JoinColumn(name = "id_carrinho",referencedColumnName = "id_carrinho",nullable = false)
-    private Carrinho carrinho; 
-    
+    @Column(name = "data_venda", nullable = false)
+    private LocalDate dataVenda = LocalDate.now(); //verificar se é uma boa pratica
+
     @Column(nullable = true)
     private Double desconto;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "venda")
+    private List<ItemVenda> itens;
 
     public Long getIdVenda() {
         return idVenda;
@@ -65,14 +70,6 @@ public class Venda implements Serializable{
         this.dataVenda = dataVenda;
     }
 
-    public Carrinho getCarrinho() {
-        return carrinho;
-    }
-
-    public void setCarrinho(Carrinho carrinho) {
-        this.carrinho = carrinho;
-    }
-
     public Double getDesconto() {
         return desconto;
     }
@@ -81,6 +78,23 @@ public class Venda implements Serializable{
         this.desconto = desconto;
     }
 
+    public List<ItemVenda> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<ItemVenda> itens) {
+        this.itens = itens;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+
+    
     @Override
     public int hashCode() {
         int hash = 5;
@@ -102,6 +116,5 @@ public class Venda implements Serializable{
         final Venda other = (Venda) obj;
         return Objects.equals(this.idVenda, other.idVenda);
     }
-    
-    
+
 }
