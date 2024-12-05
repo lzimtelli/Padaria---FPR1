@@ -35,7 +35,7 @@ public class Endereco implements Serializable {
     //necessario colocar o cliente aqui
     //verificar como será feito cliente / usuario
     @ManyToOne
-    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", nullable = false)
+    @JoinColumn(name = "id_pessoa", referencedColumnName = "id_pessoa", nullable = false)
     private Pessoa pessoa;
 
     @Column(nullable = false, length = 50)
