@@ -11,6 +11,8 @@ import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "pessoa")
@@ -37,6 +39,15 @@ public class Pessoa implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "nivel_acesso", nullable = false, length = 14)
     private NivelAcesso nivelAcesso;
+    
+    @Column(name = "cpf", nullable = true, length = 14)
+    private String cpf;
+    
+    @Column(name = "Data_Nascimento", nullable = true)
+    private LocalDate dataNascimento;
+    
+    @Column(name = "telefone", nullable = true)
+    private String telefone;
 
     public Integer getCodigo() {
         return codigo;
@@ -77,4 +88,30 @@ public class Pessoa implements Serializable {
     public void setNivelAcesso(NivelAcesso nivelAcesso) {
         this.nivelAcesso = nivelAcesso;
     }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+    
+    
 }

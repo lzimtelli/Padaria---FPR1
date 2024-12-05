@@ -8,14 +8,100 @@
 
     <ui:define name="content">
         <h:form>
+            
+
+            <div class="grid-layout" 
+                 style="display: grid;
+                 grid-template-columns: 1fr 1fr;
+                 gap: 10px;">
+                <div class="content-left" 
+                     style="grid-column: 1 / 2;
+                     padding: 10px;">
+
+                    <h1 style="margin-left:20px;">Meu Perfil </h1>
+
+                    <div class="field grid" style="margin-left: 20px; margin-bottom: 20px;">
+                        <h:outputLabel for="nome" value="Nome..." styleClass="col-12 mb-2 md:col-2 md:mb-0" />
+                        <div class="col-12 md:col-10">
+                            <p:inputText id="nome"
+                                         style="width: 300px"
+                                         value="#{loginController.pessoaAutenticada.nome}"
+                                         />
+                        </div>
+                    </div>
+
+                    <div class="field grid" style="margin-left: 20px; margin-bottom: 20px;">
+                        <h:outputLabel for="cpf" value="CPF" styleClass="col-12 mb-2 md:col-2 md:mb-0" />
+                        <div class="col-12 md:col-10" style="">
+                            <p:inputText id="cpf"
+                                         style="width: 300px"
+                                         value="#{loginController.pessoaAutenticada.cpf}"
+                                         />
+                        </div>
+                    </div> 
+                    
+                    <div class="field grid" style="margin-left: 20px; margin-bottom: 20px;">
+                        <h:outputLabel for="email" value="Email" styleClass="col-12 mb-2 md:col-2 md:mb-0" />
+                        <div class="col-12 md:col-10" style="">
+                            <p:inputText id="email"
+                                         style="width: 300px"
+                                         value="#{loginController.pessoaAutenticada.login}"
+                                         />
+                        </div>
+                    </div> 
+                    
+                    <div class="field grid" style="margin-left: 20px; margin-bottom: 20px;">
+                        <h:outputLabel for="telefone" value="Telefone" styleClass="col-12 mb-2 md:col-2 md:mb-0" />
+                        <div class="col-12 md:col-10" style="">
+                            <p:inputText id="telefone"
+                                         style="width: 300px"
+                                         value="#{loginController.pessoaAutenticada.telefone}"
+                                         />
+                        </div>
+                    </div>
+                    
+                    <div class="field grid" style="margin-left: 20px; margin-bottom: 20px;">
+                        <h:outputLabel for="dataNasc" value="Data de Nascimento" styleClass="col-12 mb-2 md:col-2 md:mb-0" />
+                        <div class="col-12 md:col-10" style="">
+                            <p:inputText id="dataNasc"
+                                         style="width: 300px"
+                                         value="#{loginController.pessoaAutenticada.dataNascimento}"
+                                         />
+                        </div>
+                    </div>
+                    
+                    <div style="margin-left: 20px; margin-bottom: 20px;">
+                        <p:commandButton value="Alterar Dados" 
+                                         update="@form" 
+                                         action="#{loginController.alterarDados}" 
+                                         style="width: 300px"
+                                         />
+                    </div>
+                    
+                </div>
+
+                <div class="content-right" 
+                     style="grid-column: 2 / 3;
+                     padding: 10px;">
+                    <h1 style="margin-left:20px;">Meus Logradouros </h1>
+
+                    <div class="field grid" style="margin-left: 20px; margin-bottom: 20px;">
+                        <h:outputLabel for="teste" value="teste" styleClass="col-12 mb-2 md:col-2 md:mb-0" />
+                        <div class="col-12 md:col-10">
+                            <p:inputText id="teste" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <h:panelGroup rendered="#{loginController.usuarioLogado()}">
-                    <h:outputText value="Bem-vindo!" />
-                    <br />
-                    <br />
-                    <p:commandButton value="Logout" 
-                                     update="@form" 
-                                     action="#{loginController.logout()}" /> 
-                </h:panelGroup>
+                <h:outputText value="Bem-vindo!" />
+                <br />
+                <br />
+                <p:commandButton value="Logout" 
+                                 update="@form" 
+                                 action="#{loginController.logout()}" /> 
+            </h:panelGroup>
         </h:form>
     </ui:define>
 
