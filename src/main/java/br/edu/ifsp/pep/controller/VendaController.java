@@ -4,6 +4,7 @@ import br.edu.ifsp.pep.dao.CarrinhoDAO;
 import br.edu.ifsp.pep.dao.ProdutoDAO;
 import br.edu.ifsp.pep.dao.VendaDAO;
 import br.edu.ifsp.pep.entity.Carrinho;
+import br.edu.ifsp.pep.entity.ItemCarrinho;
 import br.edu.ifsp.pep.entity.ItemVenda;
 import br.edu.ifsp.pep.entity.Produto;
 import br.edu.ifsp.pep.entity.Venda;
@@ -20,124 +21,110 @@ import java.util.List;
 public class VendaController implements Serializable {
 
     @Inject
-    private VendaDAO vendaDAO;
+    private CarrinhoDAO carrinhoDAO;
 
     @Inject
     private ProdutoDAO produtoDAO;
 
     @Inject
-    private CarrinhoDAO carrinhoDAO;
+    private VendaDAO vendaDAO;
 
     @Inject
-    private LoginController loginController; // Injetando o LoginController
+    private LoginController loginController;
 
-    private Venda venda = new Venda();
-    private Venda vendaSelecionada;
-    private List<ItemVenda> itensVendas = new ArrayList<>();
-    private List<Produto> produtos;
-    private Produto produtoSelecionado;
     private Carrinho carrinho;
 
-    // Método para adicionar um produto ao carrinho
-    public void adicionar(Produto produto) {
-        System.out.println("Entrou no método adicionar!");
-        this.produtoSelecionado = produto;
-        System.out.println("Produto selecionado: " + produtoSelecionado.getDescricao());
+    private List<Produto> produtos;
 
-        // Verifica se a pessoa está logada
-        if (loginController.usuarioLogado()) {
-            // Recupera o carrinho associado à pessoa logada
-            if (carrinho == null) {
-                carrinho = carrinhoDAO.buscaCarrinhoPessoa(loginController.getPessoaAutenticada());
-            }
+    private List<ItemCarrinho> itensCarrinho = new ArrayList<>();
 
-            // Verifica se o produto já está na lista de produtos
-            boolean produtoExistente = false;
-            for (Produto p : getProdutos()) {
-                if (p.equals(produto)) {
-                    produtoExistente = true;
-                    break;
-                }
-            }
-
-            // Se o produto não existir na lista de produtos, adiciona
-            if (!produtoExistente) {
-                produtos.add(produto); // Adiciona o produto à lista de produtos
-                Mensagem.sucesso("Produto adicionado à lista de produtos.");
-            } else {
-                Mensagem.sucesso("Produto já está na lista de produtos.");
-            }
-
-            // Atualiza o carrinho no banco de dados
-          //  carrinhoDAO.atualizar(carrinho);
-        } else {
-            Mensagem.erro("Você precisa estar logado para adicionar produtos ao carrinho.");
+    public void adicionarProdutoAoCarrinho(Produto produto, int quantidade) {
+        if (loginController.getPessoaAutenticada() == null) {
+            Mensagem.erro("Usuário precisa estar logado.");
+            return;
         }
-    }
 
-    // Método para finalizar a venda e transferir os itens para a venda
-    public void finalizarCarrinho() {
-        if (carrinho != null && !carrinho.getProdutos().isEmpty()) {
-            // Adiciona os itens do carrinho à venda
-            for (Produto produto : produtos) {
-                ItemVenda itemVenda = new ItemVenda();
-                itemVenda.setProdutoVenda(produto);
-                itemVenda.setQuantidade(1); // Defina a quantidade conforme necessário
-              //  carrinho.adicionarItem(itemVenda);
+        inicializarCarrinho();
+
+        boolean produtoJaAdicionado = false;
+        for (ItemCarrinho item : itensCarrinho) {
+            if (item.getProduto().equals(produto)) {
+                item.setQuantidade(item.getQuantidade() + quantidade);
+                produtoJaAdicionado = true;
+                break;
             }
-
-         //   venda.setItens(carrinho.getItens()); // Adiciona os itens do carrinho à venda
-            vendaDAO.inserir(venda); // Persiste a venda no banco de dados
-           // carrinho.getItens().clear(); // Limpa o carrinho após a finalização
-          //  carrinhoDAO.atualizar(carrinho); // Atualiza o carrinho no banco
-            Mensagem.sucesso("Venda finalizada com sucesso!");
-        } else {
-            Mensagem.erro("O carrinho está vazio, adicione produtos antes de finalizar.");
         }
+
+        if (!produtoJaAdicionado) {
+            adicionarNovoItemCarrinho(produto, quantidade);
+        }
+
+        carrinho.setItensCarrinho(itensCarrinho);
+        carrinhoDAO.alterar(carrinho);
+
+        Mensagem.sucesso("Produto adicionado ao carrinho com sucesso.");
     }
 
-    // Getter e setters
-    public VendaDAO getVendaDAO() {
-        return vendaDAO;
-    }
-
-    public void setVendaDAO(VendaDAO vendaDAO) {
-        this.vendaDAO = vendaDAO;
-    }
-
-    public Venda getVenda() {
-        return venda;
-    }
-
-    public void setVenda(Venda venda) {
-        this.venda = venda;
-    }
-
-    public Venda getVendaSelecionada() {
-        return vendaSelecionada;
-    }
-
-    public void setVendaSelecionada(Venda vendaSelecionada) {
-        this.vendaSelecionada = vendaSelecionada;
-    }
-
-    public List<ItemVenda> getItensVendas() {
-        return itensVendas;
-    }
-
-    public void setItensVendas(List<ItemVenda> itensVendas) {
-        this.itensVendas = itensVendas;
-    }
-
-    public Carrinho getCarrinho() {
-        if (carrinho == null && loginController.usuarioLogado()) {
+    private void inicializarCarrinho() {
+        if (carrinho == null) {
             carrinho = carrinhoDAO.buscaCarrinhoPessoa(loginController.getPessoaAutenticada());
+            if (carrinho == null) {
+                carrinho = new Carrinho();
+                carrinho.setPessoa(loginController.getPessoaAutenticada());
+                carrinhoDAO.inserir(carrinho);
+            }
+            if (carrinho.getItensCarrinho() == null) {
+                itensCarrinho = new ArrayList<>();
+            } else {
+                itensCarrinho = carrinho.getItensCarrinho();
+            }
         }
-        return carrinho;
     }
 
-    public void setCarrinho(Carrinho carrinho) {
-        this.carrinho = carrinho;
+    private void adicionarNovoItemCarrinho(Produto produto, int quantidade) {
+        ItemCarrinho novoItem = new ItemCarrinho();
+        novoItem.setCarrinho(carrinho);
+        novoItem.setProduto(produto);
+        novoItem.setQuantidade(quantidade);
+        itensCarrinho.add(novoItem);
+    }
+
+    public void finalizarVenda() {
+        if (carrinho == null || itensCarrinho.isEmpty()) {
+            Mensagem.erro("O carrinho está vazio.");
+            return;
+        }
+
+        try {
+            Venda venda = criarVenda();
+            vendaDAO.inserir(venda);
+
+            itensCarrinho.clear();
+            carrinho.setItensCarrinho(itensCarrinho);
+            carrinhoDAO.alterar(carrinho);
+
+            Mensagem.sucesso("Venda finalizada com sucesso.");
+        } catch (Exception e) {
+            Mensagem.erro("Erro ao finalizar a venda: " + e.getMessage());
+        }
+    }
+
+    private Venda criarVenda() {
+        Venda venda = new Venda();
+        venda.setPessoa(loginController.getPessoaAutenticada());
+
+        List<ItemVenda> itensVenda = new ArrayList<>();
+        for (ItemCarrinho itemCarrinho : itensCarrinho) {
+            ItemVenda itemVenda = new ItemVenda();
+            itemVenda.setVenda(venda);
+            itemVenda.setProdutoVenda(itemCarrinho.getProduto());
+            itemVenda.setQuantidade(itemCarrinho.getQuantidade());
+            itemVenda.setValorUnitario(itemCarrinho.getProduto().getValorVenda());
+            itensVenda.add(itemVenda);
+        }
+
+        venda.setItens(itensVenda);
+        return venda;
     }
 
     public List<Produto> getProdutos() {
@@ -147,7 +134,19 @@ public class VendaController implements Serializable {
         return produtos;
     }
 
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
+    public Carrinho getCarrinho() {
+        return carrinho;
+    }
+
+    public void setCarrinho(Carrinho carrinho) {
+        this.carrinho = carrinho;
+    }
+
+    public List<ItemCarrinho> getItensCarrinho() {
+        return itensCarrinho;
+    }
+
+    public void setItensCarrinho(List<ItemCarrinho> itensCarrinho) {
+        this.itensCarrinho = itensCarrinho;
     }
 }
