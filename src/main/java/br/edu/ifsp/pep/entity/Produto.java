@@ -29,6 +29,7 @@ import java.util.Objects;
 @NamedQueries({
     @NamedQuery(name = "Produto.buscaTodos", query = "FROM Produto p"),
       @NamedQuery(name = "Produto.buscaPorNome",  query = "SELECT p FROM Produto p WHERE p.descricao = :descricao"),      
+      @NamedQuery(name = "Produto.buscaPorCategoria",  query = "SELECT p FROM Produto p WHERE p.categoria = :cat"),      
 })
 public class Produto implements Serializable{
     
@@ -41,7 +42,7 @@ public class Produto implements Serializable{
     @JoinColumn(name = "id_categoria",referencedColumnName = "id_categoria",nullable = false)
     private Categoria categoria; 
     
-    @Column(nullable = false,length = 50)
+    @Column(nullable = false,length = 50, name = "descricao")
     private String descricao;
     
     @Column(name = "qtd_estoque",nullable = false)

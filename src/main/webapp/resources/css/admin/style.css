@@ -236,3 +236,11 @@ footer {
   gap: 50px;
   flex-direction: column;
 }
+
+/* asdasd----- */
+.ajeitaflex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}

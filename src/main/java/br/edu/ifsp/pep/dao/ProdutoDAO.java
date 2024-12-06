@@ -4,6 +4,7 @@
  */
 package br.edu.ifsp.pep.dao;
 
+import br.edu.ifsp.pep.entity.Categoria;
 import br.edu.ifsp.pep.entity.Produto;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.TypedQuery;
@@ -25,6 +26,13 @@ public class ProdutoDAO extends AbstractDAO<Produto> {
 
         TypedQuery<Produto> query = em.createNamedQuery("Produto.buscaPorNome", Produto.class);
         query.setParameter("nome", nome);
+        return query.getResultList();
+    }
+
+    public List<Produto> buscarPorCategoria(Categoria cat) {
+
+        TypedQuery<Produto> query = em.createNamedQuery("Produto.buscaPorCategoria", Produto.class);
+        query.setParameter("cat", cat);
         return query.getResultList();
     }
 

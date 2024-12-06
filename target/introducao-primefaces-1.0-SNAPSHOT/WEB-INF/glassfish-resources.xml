@@ -6,7 +6,7 @@
         <property name="portNumber" value="3306"/>
         <property name="databaseName" value="db_padaria"/>
         <property name="User" value="root"/>
-        <property name="Password" value="Leo19042005"/>
+        <property name="Password" value="cp2301hg"/>
         <property name="URL" value="jdbc:mysql://localhost:3306/db_padaria?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;createDatabaseIfNotExist=true&amp;serverTimezone=UTC&amp;serverTimezone=America/Sao_Paulo"/>
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
     </jdbc-connection-pool>

@@ -5,7 +5,9 @@
 package br.edu.ifsp.pep.controller;
 
 import br.edu.ifsp.pep.dao.CategoriaDAO;
+import br.edu.ifsp.pep.dao.ProdutoDAO;
 import br.edu.ifsp.pep.entity.Categoria;
+import br.edu.ifsp.pep.entity.Produto;
 import br.edu.ifsp.pep.util.Mensagem;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
@@ -19,6 +21,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.primefaces.PrimeFaces;
+import org.primefaces.event.SelectEvent;
 
 /**
  *
@@ -34,6 +37,8 @@ public class CategoriaController implements Serializable {
     private Categoria categoriaSelecionada = new Categoria();
 
     private List<Categoria> categorias;
+
+    private List<Produto> produtos;
 
     public void remover() {
         if (categoriaSelecionada.getIdCategoria() != null) {
@@ -53,6 +58,8 @@ public class CategoriaController implements Serializable {
         categoriaSelecionada = new Categoria();
         System.out.println("teste");
         System.out.println(categorias.size());
+        PrimeFaces.current().ajax().update(":options:categoria-button-1", ":options:categoria-button-2",
+                "form1:tabela");
     }
 
     public void adicionar() {
@@ -62,13 +69,12 @@ public class CategoriaController implements Serializable {
         Mensagem.sucesso("categoria cadastradca.");
     }
 
-    public String alterar() {
+    public void alterar() {
         categoriaDAO.alterar(categoriaSelecionada);
         categorias = null;
         // Criar categoria
         Mensagem.sucesso("categoria alterada.");
 
-        return null;
     }
 
     public void save() {
@@ -120,6 +126,26 @@ public class CategoriaController implements Serializable {
         }
         return true;
 
+    }
+
+    public List<Produto> getProdutos() {
+        System.out.println("exec");
+        if (produtos == null) {
+            produtos = categoriaDAO.buscarProdutos(categoriaSelecionada);
+        }
+
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
+
+    public void onRowSelect() {
+        // Lógica para processar a categoria selecionada
+        System.out.println("hereeee");
+        produtos = null;
+        PrimeFaces.current().ajax().update(":form2:products");
     }
 
 }

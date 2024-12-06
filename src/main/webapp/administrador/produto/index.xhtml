@@ -5,60 +5,55 @@
   xmlns="http://www.w3.org/1999/xhtml"
   xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
   xmlns:h="jakarta.faces.html"
+  xmlns:f="jakarta.faces.core"
   xmlns:p="primefaces"
 >
   <ui:define name="content2">
     <div class="top">
-      <h2 class="title">Produtos</h2>
+      <h2 class="title">Produto</h2>
     </div>
 
     <p:toolbar>
       <p:toolbarGroup>
-        <p:commandButton
-          value="New"
-          icon="pi pi-plus"
-          actionListener="#{crudView.openNew}"
-          oncomplete="PF('manageProductDialog').show()"
-          styleClass="ui-button-success"
-          style="margin-right: 0.5rem"
-        >
-        </p:commandButton>
-        <p:commandButton
-          id="delete-products-button1"
-          value="#{crudView.deleteButtonMessage}"
-          icon="pi pi-pencil"
-          actionListener="#{crudView.deleteSelectedProducts}"
-          styleClass="ui-button-warning"
-          disabled="#{!crudView.hasSelectedProducts()}"
-          style="margin-right: 0.5rem"
-        >
-        </p:commandButton>
-
-        <p:commandButton
-          id="delete-products-button1"
-          value="#{crudView.deleteButtonMessage}"
-          icon="pi pi-eye"
-          actionListener="#{crudView.deleteSelectedProducts}"
-          styleClass="ui-button-secundary"
-          disabled="#{!crudView.hasSelectedProducts()}"
-          style="margin-right: 0.5rem"
-        >
-        </p:commandButton>
-        <p:commandButton
-          id="delete-products-button"
-          value="#{crudView.deleteButtonMessage}"
-          icon="pi pi-trash"
-          actionListener="#{crudView.deleteSelectedProducts}"
-          styleClass="ui-button-danger"
-          disabled="#{!crudView.hasSelectedProducts()}"
-          update="@this"
-        >
-          <p:confirm
-            header="Confirmation"
-            message="Delete the selected products?"
-            icon="pi pi-exclamation-triangle"
-          />
-        </p:commandButton>
+        <h:form>
+          <p:commandButton
+            id="categoria-button-add"
+            value="New"
+            icon="pi pi-plus"
+            actionListener="#{produtoController.prepararCadastro}"
+            styleClass="ui-button-success"
+            style="margin-right: 0.5rem"
+            update=":dialogs:manage-cetegoria-content"
+            oncomplete="PF('manageCategoriaDialog').show()"
+            process="@this"
+          >
+          </p:commandButton>
+        </h:form>
+        <h:form id="options">
+          <p:commandButton
+            id="categoria-button-1"
+            value="Alterar"
+            icon="pi pi-pencil"
+            styleClass="ui-button-warning"
+            disabled="#{!produtoController.hasSelectedProd()}"
+            style="margin-right: 0.5rem"
+            update=":dialogs:manage-cetegoria-content"
+            oncomplete="PF('manageCategoriaDialog').show()"
+            process="@this"
+          >
+          </p:commandButton>
+          <p:commandButton
+            id="categoria-button-2"
+            value="Remover"
+            icon="pi pi-trash"
+            styleClass="ui-button-danger"
+            disabled="#{!produtoController.hasSelectedProd()}"
+            process="@this"
+            update=":dialogs:deleteCategoriaDialog"
+            oncomplete="PF('deleteCategoriaDialog').show()"
+          >
+          </p:commandButton>
+        </h:form>
       </p:toolbarGroup>
     </p:toolbar>
 
@@ -68,51 +63,182 @@
           <p:dataTable
             size="small"
             id="products"
-            var="product"
-            value="#{dtContextMenuView.products}"
-            rowKey="#{product.id}"
-            selection="#{dtContextMenuView.selectedProduct}"
-            selectionMode="single"
-            emptyMessage="No customers found with given criteria"
-            filteredValue="#{dtFilterView.filteredCustomers1}"
+            var="prod"
+            value="#{produtoController.produtos}"
+            rowKey="#{prod.idProduto}"
             showGridlines="true"
+            selection="#{produtoController.produtoSelecionado}"
+            selectionMode="single"
           >
+            <p:ajax
+              event="rowSelect"
+              update=":options"
+              listener="#{produtoController.onRowSelect()}"
+            />
+
             <p:column
               headerText="Descrição"
-              sortBy="#{customer.name}"
-              filterBy="#{customer.name}"
+              sortBy="#{prod.descricao}"
+              filterBy="#{prod.descricao}"
               filterMatchMode="contains"
               colspan="4"
             >
-              <h:outputText value="#{product.name}" />
+              <h:outputText value="#{prod.descricao}" />
             </p:column>
             <p:column
               headerText="Quantidade"
-              sortBy="#{customer.name}"
-              filterBy="#{customer.name}"
+              sortBy="#{prod.qtdEstoque}"
+              filterBy="#{prod.qtdEstoque}"
               filterMatchMode="contains"
             >
-              <h:outputText value="#{product.name}" />
+              <h:outputText value="#{prod.qtdEstoque}" />
             </p:column>
             <p:column
               headerText="Valor Compra"
-              sortBy="#{customer.name}"
-              filterBy="#{customer.name}"
+              sortBy="#{prod.valorCompra}"
+              filterBy="#{prod.valorCompra}"
               filterMatchMode="contains"
             >
-              <h:outputText value="#{product.name}" />
+              <h:outputText value="#{prod.valorCompra}" />
             </p:column>
             <p:column
               headerText="Valor Venda"
-              sortBy="#{customer.name}"
-              filterBy="#{customer.name}"
+              sortBy="#{prod.valorVenda}"
+              filterBy="#{prod.valorVenda}"
               filterMatchMode="contains"
             >
-              <h:outputText value="#{product.name}" />
+              <h:outputText value="#{prod.valorVenda}" />
             </p:column>
           </p:dataTable>
         </h:form>
       </div>
     </div>
+
+    <h:form id="dialogs">
+      <p:dialog
+        header="Produto"
+        showEffect="fade"
+        modal="true"
+        widgetVar="manageCategoriaDialog"
+        responsive="true"
+      >
+        <p:outputPanel id="manage-cetegoria-content" class="ui-fluid">
+          <p:outputPanel>
+            <!-- rendered="#{not empty crudView.selectedProduct.image}" -->
+            <div class="field">
+              <p:outputLabel for="name">Nome</p:outputLabel>
+              <p:inputText
+                id="name"
+                value="#{produtoController.produtoSelecionado.descricao}"
+                required="true"
+              />
+            </div>
+
+            <div class="formgrid ui-fluid ajeitaprice">
+              <div class="field">
+                <p:outputLabel for="preco-compra">Preço Compra</p:outputLabel>
+                <p:inputNumber
+                  id="preco-compra"
+                  value="#{produtoController.produtoSelecionado.valorCompra}"
+                  symbol=" BRL"
+                  symbolPosition="s"
+                  decimalSeparator=","
+                  thousandSeparator="."
+                />
+              </div>
+              <div class="field">
+                <p:outputLabel for="preco-venda">Preço Venda</p:outputLabel>
+                <p:inputNumber
+                  id="preco-venda"
+                  value="#{produtoController.produtoSelecionado.valorVenda}"
+                  symbol=" BRL"
+                  symbolPosition="s"
+                  decimalSeparator=","
+                  thousandSeparator="."
+                />
+              </div>
+            </div>
+            <div class="ajeitaflex">
+              <div class="field">
+                <p:outputLabel for="quantity-atual">Quantidade</p:outputLabel>
+                <p:spinner
+                  id="quantity-atual"
+                  min="0"
+                  value="#{produtoController.produtoSelecionado.qtdEstoque}"
+                />
+              </div>
+
+              <div class="field">
+                <p:outputLabel for="quantity">Quantidade Minima</p:outputLabel>
+                <p:spinner
+                  id="quantity"
+                  min="0"
+                  value="#{produtoController.produtoSelecionado.qtdMinima}"
+                />
+              </div>
+            </div>
+            <div class="field">
+              <p:outputLabel for="@next" value="Categoria" />
+              <p:selectOneMenu
+                id="advanced"
+                value="#{produtoController.selectedCategoria}"
+                converter="#{countryConverter}"
+              >
+                <f:selectItems
+                  value="#{categoriaController.categorias}"
+                  var="cat"
+                  itemLabel="#{cat.descricao}"
+                  itemValue="#{cat}"
+                />
+              </p:selectOneMenu>
+            </div>
+          </p:outputPanel>
+        </p:outputPanel>
+
+        <f:facet name="footer">
+          <p:commandButton
+            value="Salvar"
+            icon="pi pi-check"
+            actionListener="#{produtoController.save}"
+            update="manage-cetegoria-content form2:products grow :options"
+            process="manage-cetegoria-content @this"
+          />
+          <p:commandButton
+            value="Cancelar"
+            icon="pi pi-times"
+            update=":options"
+            onclick="PF('manageCategoriaDialog').hide()"
+            class="ui-button-secondary"
+            type="button"
+          />
+        </f:facet>
+      </p:dialog>
+
+      <p:confirmDialog
+        id="deleteCategoriaDialog"
+        widgetVar="deleteCategoriaDialog"
+        showEffect="fade"
+        width="400"
+        message="Remover categoria? ( #{categoriaController.categoriaSelecionada.descricao} )"
+        header="Confirm"
+        severity="warn"
+      >
+        <p:commandButton
+          value="Yes"
+          icon="pi pi-check"
+          actionListener="#{categoriaController.remover}"
+          process="@this"
+          update="form1:tabela grow :options"
+          oncomplete="PF('deleteCategoriaDialog').hide()"
+        />
+        <p:commandButton
+          value="No"
+          type="button"
+          styleClass="ui-button-secondary"
+          icon="pi pi-times"
+          onclick="PF('deleteCategoriaDialog').hide()"
+        />
+      </p:confirmDialog>
+    </h:form>
   </ui:define>
 </ui:composition>
