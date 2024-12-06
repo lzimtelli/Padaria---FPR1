@@ -6,7 +6,6 @@ package br.edu.ifsp.pep.controller;
 
 import br.edu.ifsp.pep.dao.CarrinhoDAO;
 import br.edu.ifsp.pep.entity.Carrinho;
-import br.edu.ifsp.pep.entity.ItemCarrinho;
 import br.edu.ifsp.pep.entity.Produto;
 import br.edu.ifsp.pep.util.Mensagem;
 import jakarta.faces.annotation.View;
