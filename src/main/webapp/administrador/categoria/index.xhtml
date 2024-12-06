@@ -25,6 +25,7 @@
             style="margin-right: 0.5rem"
             update=":dialogs:manage-cetegoria-content"
             oncomplete="PF('manageCategoriaDialog').show()"
+            process="@this"
           >
           </p:commandButton>
         </h:form>
@@ -75,8 +76,12 @@
             size="small"
             showGridlines="true"
           >
-            <p:ajax event="rowSelect" update=":options" />
-            <p:ajax event="rowUnselect" update=":options" />
+            <p:ajax
+              event="rowSelect"
+              update=":options"
+              listener="#{categoriaController.onRowSelect()}"
+            />
+            <!--<p:ajax event="rowUnselect" update=":options" />-->
 
             <!--filterMatchMode="contains"-->
 
@@ -98,47 +103,43 @@
           <p:dataTable
             size="small"
             id="products"
-            var="product"
-            value="#{dtContextMenuView.products}"
-            rowKey="#{product.id}"
-            selection="#{dtContextMenuView.selectedProduct}"
-            selectionMode="single"
-            emptyMessage="No customers found with given criteria"
-            filteredValue="#{dtFilterView.filteredCustomers1}"
+            var="prod"
+            value="#{categoriaController.produtos}"
+            rowKey="#{prod.idProduto}"
             showGridlines="true"
           >
             <p:column
               headerText="Descrição"
-              sortBy="#{customer.name}"
-              filterBy="#{customer.name}"
+              sortBy="#{prod.descricao}"
+              filterBy="#{prod.descricao}"
               filterMatchMode="contains"
               colspan="4"
             >
-              <h:outputText value="#{product.name}" />
+              <h:outputText value="#{prod.descricao}" />
             </p:column>
             <p:column
               headerText="Quantidade"
-              sortBy="#{customer.name}"
-              filterBy="#{customer.name}"
+              sortBy="#{prod.qtdEstoque}"
+              filterBy="#{prod.qtdEstoque}"
               filterMatchMode="contains"
             >
-              <h:outputText value="#{product.name}" />
+              <h:outputText value="#{prod.qtdEstoque}" />
             </p:column>
             <p:column
               headerText="Valor Compra"
-              sortBy="#{customer.name}"
-              filterBy="#{customer.name}"
+              sortBy="#{prod.valorCompra}"
+              filterBy="#{prod.valorCompra}"
               filterMatchMode="contains"
             >
-              <h:outputText value="#{product.name}" />
+              <h:outputText value="#{prod.valorCompra}" />
             </p:column>
             <p:column
               headerText="Valor Venda"
-              sortBy="#{customer.name}"
-              filterBy="#{customer.name}"
+              sortBy="#{prod.valorVenda}"
+              filterBy="#{prod.valorVenda}"
               filterMatchMode="contains"
             >
-              <h:outputText value="#{product.name}" />
+              <h:outputText value="#{prod.valorVenda}" />
             </p:column>
           </p:dataTable>
         </h:form>
