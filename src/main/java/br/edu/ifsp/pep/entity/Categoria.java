@@ -13,6 +13,7 @@ import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
@@ -29,21 +30,21 @@ public class Categoria implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_categoria")
-    private int idCategoria;
+    private Integer idCategoria;
 
     @Column(nullable = false, length = 30, name = "descricao")
     private String descricao;
 
-    public int getIdCategoria() {
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public Integer getIdCategoria() {
         return idCategoria;
     }
 
-    public void setIdCategoria(int idCategoria) {
+    public void setIdCategoria(Integer idCategoria) {
         this.idCategoria = idCategoria;
-    }
-
-    public String getDescricao() {
-        return descricao;
     }
 
     public void setDescricao(String descricao) {
@@ -69,7 +70,7 @@ public class Categoria implements Serializable {
             return false;
         }
         final Categoria other = (Categoria) obj;
-        return this.idCategoria == other.idCategoria;
+        return Objects.equals(this.idCategoria, other.idCategoria);
     }
 
 }
