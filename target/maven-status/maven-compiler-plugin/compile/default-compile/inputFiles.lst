@@ -3,9 +3,11 @@ D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entit
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\VendaDAO.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Pessoa.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\ForncedorDAO.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\FornecedorDAO.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\PessoaDAO.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\ItemCarrinhoDAO.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Venda.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\ProdutoDAO.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Fornecedor.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\ItemCarrinhoPK.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\controller\PessoaController.java
@@ -13,8 +15,11 @@ D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\C
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Carrinho.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\ItemVenda.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\listener\LifeCycleListener.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\controller\FornecedorController.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\controller\LoginController.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\controller\ProdutoController.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\ItemCompraDAO.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\controller\CompraController.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\controller\CategoriaController.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\ItemVendaPK.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\ClienteDAO.java
@@ -28,5 +33,8 @@ D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entit
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\util\Mensagem.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Categoria.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\CompraDAO.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\controller\CarrinhoController.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\controller\EnderecoController.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\controller\VendaController.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Endereco.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\ItemCompraPK.java
