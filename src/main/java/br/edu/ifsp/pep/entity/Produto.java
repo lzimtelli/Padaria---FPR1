@@ -6,6 +6,8 @@ package br.edu.ifsp.pep.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -54,22 +56,23 @@ public class Produto implements Serializable{
     @Column(name = "valor_venda",nullable = false)
     private Double valorVenda;
     
+      @Enumerated(EnumType.STRING)
+    @Column(name = "produto_status", nullable = false, length = 14)
+    private ProdutoStatus produtoStatus; 
+    
 
     public Produto() {
     }
 
-    public Produto(Long idProduto, String descricao, int qtdEstoque, int qtdMinima, Double valorCompra, Double valorVenda, Categoria categoria) {
-        this.idProduto = idProduto;
+    public Produto(Categoria categoria, String descricao, int qtdEstoque, int qtdMinima, Double valorCompra, Double valorVenda, ProdutoStatus produtoStatus) {
+        this.categoria = categoria;
         this.descricao = descricao;
         this.qtdEstoque = qtdEstoque;
         this.qtdMinima = qtdMinima;
         this.valorCompra = valorCompra;
         this.valorVenda = valorVenda;
-        this.categoria = categoria;
+        this.produtoStatus = produtoStatus;
     }
-    
-    
-   
 
     public Long getIdProduto() {
         return idProduto;
@@ -77,6 +80,14 @@ public class Produto implements Serializable{
 
     public void setIdProduto(Long idProduto) {
         this.idProduto = idProduto;
+    }
+
+    public ProdutoStatus getProdutoStatus() {
+        return produtoStatus;
+    }
+
+    public void setProdutoStatus(ProdutoStatus produtoStatus) {
+        this.produtoStatus = produtoStatus;
     }
 
     
