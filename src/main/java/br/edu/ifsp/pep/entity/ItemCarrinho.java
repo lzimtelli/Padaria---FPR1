@@ -23,36 +23,20 @@ import java.util.Objects;
 @Entity
 @Table(name = "item_carrinho")
 @IdClass(ItemCarrinhoPK.class)
-public class ItemCarrinho implements Serializable{
-    
-    //@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_item")
-    private int idItemCarrinho;
-    
+public class ItemCarrinho implements Serializable {
+
     @Id
-    @JoinColumn(name = "id_carrinho",referencedColumnName = "id_carrinho",nullable = false)
+    @JoinColumn(name = "id_carrinho", referencedColumnName = "id_carrinho", nullable = false)
     @ManyToOne
     private Carrinho carrinho;
-    
+
     @Id
-    @JoinColumn(name = "id_produto",referencedColumnName = "id_produto",nullable = false)
-    @ManyToOne   
+    @JoinColumn(name = "id_produto", referencedColumnName = "id_produto", nullable = false)
+    @ManyToOne
     private Produto produto;
-    
-    @Column(name = "valor_venda",nullable = false)
-    private Double valorVenda;
-   
+
     @Column(nullable = false)
     private int quantidade;
-
-    public int getIdItemCarrinho() {
-        return idItemCarrinho;
-    }
-
-    public void setIdItemCarrinho(int idItemCarrinho) {
-        this.idItemCarrinho = idItemCarrinho;
-    }
 
     public Carrinho getCarrinho() {
         return carrinho;
@@ -68,14 +52,6 @@ public class ItemCarrinho implements Serializable{
 
     public void setProduto(Produto produto) {
         this.produto = produto;
-    }
-
-    public Double getValorVenda() {
-        return valorVenda;
-    }
-
-    public void setValorVenda(Double valorVenda) {
-        this.valorVenda = valorVenda;
     }
 
     public int getQuantidade() {
@@ -112,8 +88,4 @@ public class ItemCarrinho implements Serializable{
         return Objects.equals(this.produto, other.produto);
     }
 
- 
-    
-    
-   
 }
