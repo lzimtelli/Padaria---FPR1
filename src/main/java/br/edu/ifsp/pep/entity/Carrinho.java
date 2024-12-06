@@ -2,6 +2,7 @@ package br.edu.ifsp.pep.entity;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -29,7 +30,11 @@ public class Carrinho implements Serializable {
     )
     private List<Produto> produtos;
 
+    @OneToMany(mappedBy = "carrinho", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ItemCarrinho> itensCarrinho = new ArrayList<>();
+
     public Carrinho() {
+
     }
 
     public Long getIdCarrinho() {
@@ -56,6 +61,14 @@ public class Carrinho implements Serializable {
         this.produtos = produtos;
     }
 
+    public List<ItemCarrinho> getItensCarrinho() {
+        return itensCarrinho;
+    }
+
+    public void setItensCarrinho(List<ItemCarrinho> itensCarrinho) {
+        this.itensCarrinho = itensCarrinho;
+    }
+   
     @Override
     public int hashCode() {
         int hash = 7;
