@@ -52,5 +52,4 @@ public class Endereco implements Serializable {
 
     @Column(nullable = false)
     private int numero;
-
 }

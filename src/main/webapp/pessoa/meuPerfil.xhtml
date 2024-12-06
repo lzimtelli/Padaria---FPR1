@@ -8,7 +8,7 @@
 
     <ui:define name="content">
         <h:form>
-            
+
 
             <div class="grid-layout" 
                  style="display: grid;
@@ -21,7 +21,7 @@
                     <h1 style="margin-left:20px;">Meu Perfil </h1>
 
                     <div class="field grid" style="margin-left: 20px; margin-bottom: 20px;">
-                        <h:outputLabel for="nome" value="Nome..." styleClass="col-12 mb-2 md:col-2 md:mb-0" />
+                        <h:outputLabel for="nome" value="Nome" styleClass="col-12 mb-2 md:col-2 md:mb-0" />
                         <div class="col-12 md:col-10">
                             <p:inputText id="nome"
                                          style="width: 300px"
@@ -33,13 +33,15 @@
                     <div class="field grid" style="margin-left: 20px; margin-bottom: 20px;">
                         <h:outputLabel for="cpf" value="CPF" styleClass="col-12 mb-2 md:col-2 md:mb-0" />
                         <div class="col-12 md:col-10" style="">
-                            <p:inputText id="cpf"
+                            <p:inputMask id="cpf"
                                          style="width: 300px"
                                          value="#{loginController.pessoaAutenticada.cpf}"
+                                         mask="999.999.999-99"
+                                         validateMask="true"
                                          />
                         </div>
                     </div> 
-                    
+
                     <div class="field grid" style="margin-left: 20px; margin-bottom: 20px;">
                         <h:outputLabel for="email" value="Email" styleClass="col-12 mb-2 md:col-2 md:mb-0" />
                         <div class="col-12 md:col-10" style="">
@@ -49,27 +51,31 @@
                                          />
                         </div>
                     </div> 
-                    
+
                     <div class="field grid" style="margin-left: 20px; margin-bottom: 20px;">
                         <h:outputLabel for="telefone" value="Telefone" styleClass="col-12 mb-2 md:col-2 md:mb-0" />
-                        <div class="col-12 md:col-10" style="">
-                            <p:inputText id="telefone"
+                        <div class="col-12 md:col-10">
+                            <p:inputMask id="telefone"
                                          style="width: 300px"
                                          value="#{loginController.pessoaAutenticada.telefone}"
+                                         mask="(99)99999-9999"
+                                         validateMask="true"
                                          />
                         </div>
                     </div>
-                    
+
                     <div class="field grid" style="margin-left: 20px; margin-bottom: 20px;">
-                        <h:outputLabel for="dataNasc" value="Data de Nascimento" styleClass="col-12 mb-2 md:col-2 md:mb-0" />
-                        <div class="col-12 md:col-10" style="">
-                            <p:inputText id="dataNasc"
-                                         style="width: 300px"
-                                         value="#{loginController.pessoaAutenticada.dataNascimento}"
-                                         />
+                        <p:outputLabel for="nasc" value="Data Nascimento" styleClass="col-12 mb-2 md:col-2 md:mb-0"/>
+                        <div class="col-12 md:col-10">
+                            <p:calendar id="nasc" 
+                                        value="#{loginController.pessoaAutenticada.dataNascimento}" 
+                                        pattern="dd/MM/yyyy" 
+                                        mask="true"
+                                        style="width: 300px;"
+                                        />
                         </div>
                     </div>
-                    
+
                     <div style="margin-left: 20px; margin-bottom: 20px;">
                         <p:commandButton value="Alterar Dados" 
                                          update="@form" 
@@ -77,7 +83,6 @@
                                          style="width: 300px"
                                          />
                     </div>
-                    
                 </div>
 
                 <div class="content-right" 
@@ -86,14 +91,32 @@
                     <h1 style="margin-left:20px;">Meus Logradouros </h1>
 
                     <div class="field grid" style="margin-left: 20px; margin-bottom: 20px;">
-                        <h:outputLabel for="teste" value="teste" styleClass="col-12 mb-2 md:col-2 md:mb-0" />
-                        <div class="col-12 md:col-10">
-                            <p:inputText id="teste" />
-                        </div>
+                        <p:dataTable
+                            id="tabela"
+                            value="#{categoriaController.categorias}"
+                            var="item"
+                            rowKey="#{item.idCategoria}"
+                            selection="#{categoriaController.categoriaSelecionada}"
+                            selectionMode="single"
+                            scrollable="true"
+                            scrollHeight="400"
+                            resizeMode="expand"
+                            size="small"
+                            showGridlines="true"
+                            >
+                            <!--filterMatchMode="contains"-->
+
+                            <p:column
+                                headerText="Nome"
+                                colspan="6"
+                                >
+                                <h:outputText value="#{item.descricao}" />
+                            </p:column>
+                        </p:dataTable>
                     </div>
                 </div>
             </div>
-            
+
             <h:panelGroup rendered="#{loginController.usuarioLogado()}">
                 <h:outputText value="Bem-vindo!" />
                 <br />
