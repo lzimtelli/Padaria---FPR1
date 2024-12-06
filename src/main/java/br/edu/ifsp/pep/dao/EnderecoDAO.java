@@ -23,4 +23,6 @@ public class EnderecoDAO extends AbstractDAO<Endereco> {
 
         return query.getResultList();
     }
+    
+    
 }
