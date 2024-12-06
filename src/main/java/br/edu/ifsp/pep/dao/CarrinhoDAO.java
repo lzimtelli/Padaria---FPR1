@@ -9,6 +9,7 @@ import br.edu.ifsp.pep.entity.Carrinho;
 import br.edu.ifsp.pep.entity.Pessoa;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
 
 /**
@@ -18,10 +19,14 @@ import jakarta.persistence.TypedQuery;
 @Stateless
 public class CarrinhoDAO extends AbstractDAO<Carrinho> {
 
-     public Carrinho buscaCarrinhoPessoa(Pessoa pessoa){
-          TypedQuery<Carrinho> query = em.createNamedQuery("Carrinho.buscaAberto", Carrinho.class);
-        query.setParameter("pessoa", pessoa);
+    public Carrinho buscaCarrinhoPessoa(Pessoa pessoa) {
+        try {
+            TypedQuery<Carrinho> query = em.createNamedQuery("Carrinho.buscaAberto", Carrinho.class);
+            query.setParameter("pessoa", pessoa);
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            return null; 
+        }
+    }
 
-        return query.getSingleResult();   
-    } 
 }
