@@ -1,0 +1,104 @@
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="/WEB-INF/template.xhtml"
+    xmlns:h="jakarta.faces.html"
+    xmlns:p="primefaces"
+    xmlns:f="jakarta.faces.core">
+    <ui:define name="content">
+        <h:head>
+            <h:outputStylesheet name="css/main/produto.css" />
+            <title>Padaria Familiar</title>
+        </h:head>
+        <div class="card product">
+            <h:form id="form">
+                <p:dataView  var="product" value="#{vendaController.produtos}" rows="12" paginator="true"
+                             rowsPerPageTemplate="6,12,16"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             gridIcon="pi pi-th-large" listIcon="pi pi-bars">
+
+                    <p:dataViewGridItem>
+                        <div class="product-grid-item card border-2">
+                            <div class="product-grid-item-top">
+                                <div>
+                                    <i class="pi pi-tag product-category-icon"></i>
+                                    <span class="product-category">#{product.categoria.descricao}</span>
+                                </div>
+
+                            </div>
+
+                            <div class="product-grid-item-content">
+                                <p:graphicImage name="imgs/heineken.jpg" />
+                                <div class="product-description">#{product.descricao}</div>
+                            </div>
+
+                            <div class="product-grid-item-bottom">
+                                <div>
+                                    <h:outputText value="#{product.valorVenda}" styleClass="product-price">
+                                        <f:convertNumber currencySymbol="R$" type="currency"/>
+                                    </h:outputText>
+                                </div>
+                                <br />
+                                <div>
+                                    <h:commandButton value="Adicionar" action="#{vendaController.adicionar(product)}" />
+
+                                    <p:commandButton type="submit"
+                                                     value="Adicionar"
+                                                     icon="pi pi-shopping-cart"
+                                                     disabled="#{product.produtoStatus == 'Indisponivel'}"
+                                                     action="#{vendaController.adicionar(product)}"
+                                                     process="@this"
+                                                     update="@form"
+                                                     >
+                                    </p:commandButton>
+                                </div>
+                                <br />
+                                <div>
+                                    <span class="product-badge #{product.produtoStatus}">
+                                        #{product.produtoStatus}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </p:dataViewGridItem>
+
+                    <p:dataViewListItem>
+                        <div class="product-list-item">
+                            <p:graphicImage name="imgs/picanha.jpg" />
+                            <div class="product-list-detail">
+                                <div class="product-description">#{product.descricao}</div>
+                                <i class="pi pi-tag product-category-icon"></i>
+                                <span class="product-category">#{product.categoria.descricao}</span>
+                            </div>
+                            <div class="product-list-action">
+                                <div>
+                                    <h:outputText value="#{product.valorVenda}" styleClass="product-price">
+                                        <f:convertNumber currencySymbol="R$" type="currency"/>
+                                    </h:outputText>
+                                </div>
+                                <br />
+                                <div>
+                                    <p:commandButton type="submit"
+                                                     value="Adicionar"
+                                                     icon="pi pi-shopping-cart"
+                                                     disabled="#{product.produtoStatus == 'Indisponivel'}"
+                                                     action="#{vendaController.adicionar(product)}"
+                                                     process="@this"
+                                                     update="@form"
+                                                     >
+                                    </p:commandButton>
+                                </div>
+                                <br />
+                                <div>
+                                    <span class="product-badge #{product.produtoStatus}">
+                                        #{product.produtoStatus}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </p:dataViewListItem>
+                </p:dataView>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
