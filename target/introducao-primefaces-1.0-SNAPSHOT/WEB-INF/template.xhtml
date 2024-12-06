@@ -22,8 +22,17 @@
                 <h:form>
                     <p:menubar>
                         <f:facet name="end">
+<!--                            <a href="/login/login" style="color: black; margin-right: 20px;">
+                                <p>Comprar</p>
+                            </a>-->
+                            
+                            <h:outputText value="Comprar"
+                                          style="color: black; margin-right: 20px
+                                          "/>
+
                             <h:outputText value="Quem somos"
-                                          style="color: black"/>
+                                          style="color: black; margin-right: 20px
+                                          "/>
                             
                             <h:outputText 
                                 value="#{loginController.pessoaAutenticada.nome}" 
