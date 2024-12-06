@@ -93,10 +93,10 @@
                     <div class="field grid" style="margin-left: 20px; margin-bottom: 20px;">
                         <p:dataTable
                             id="tabela"
-                            value="#{categoriaController.categorias}"
-                            var="item"
-                            rowKey="#{item.idCategoria}"
-                            selection="#{categoriaController.categoriaSelecionada}"
+                            value="#{enderecoController.enderecos}"
+                            var="endereco"
+                            rowKey="#{endereco.id}"
+                            selection="#{enderecoController.enderecoSelecionado}"
                             selectionMode="single"
                             scrollable="true"
                             scrollHeight="400"
@@ -106,13 +106,19 @@
                             >
                             <!--filterMatchMode="contains"-->
 
-                            <p:column
-                                headerText="Nome"
-                                colspan="6"
-                                >
-                                <h:outputText value="#{item.descricao}" />
+                            <p:column headerText="Logradouro">
+                                <h:outputText value="#{endereco.logradouro}" />
+                            </p:column>
+                            <p:column headerText="Numero">
+                                <h:outputText value="#{endereco.numero}" />
+                            </p:column>
+                            <p:column headerText="Bairro">
+                                <h:outputText value="#{endereco.bairro}" />
                             </p:column>
                         </p:dataTable>
+                        <p:commandButton value="Adicionar Endereco" 
+                                         style="width: 300px"
+                                         />
                     </div>
                 </div>
             </div>

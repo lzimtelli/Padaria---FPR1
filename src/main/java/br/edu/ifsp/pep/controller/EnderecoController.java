@@ -29,6 +29,9 @@ public class EnderecoController implements Serializable{
 
     private List<Endereco> enderecos;
     
+    @Inject
+    private LoginController pessoaAutenticada;
+    
         public void remover() {
         if (enderecoSelecionado != null) {
             System.out.println("Removendo endereco selecionado");
@@ -84,6 +87,9 @@ public class EnderecoController implements Serializable{
     }
 
     public List<Endereco> getEnderecos() {
+        if(enderecos == null){
+            enderecos = enderecoDAO.buscaPorUsuario(pessoaAutenticada.getPessoaAutenticada());
+        }
         return enderecos;
     }
 
