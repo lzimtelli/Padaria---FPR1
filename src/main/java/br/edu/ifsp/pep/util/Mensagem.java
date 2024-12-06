@@ -14,17 +14,17 @@ import jakarta.faces.context.FacesContext;
 public class Mensagem {
 
     public static void sucesso(String mensagem) {
-        FacesContext.getCurrentInstance().
-                addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", mensagem));
+        FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_INFO, mensagem, mensagem));
     }
 
     public static void atencao(String mensagem) {
-        FacesContext.getCurrentInstance().
-                addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "", mensagem));
+        FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_WARN, mensagem, mensagem));
     }
 
     public static void erro(String mensagem) {
-        FacesContext.getCurrentInstance().
-                addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", mensagem));
+        FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_ERROR, mensagem, mensagem));
     }
 }

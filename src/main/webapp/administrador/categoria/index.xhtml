@@ -15,39 +15,44 @@
 
     <p:toolbar>
       <p:toolbarGroup>
-        <p:commandButton
-          value="New"
-          icon="pi pi-plus"
-          actionListener="#{categoriaController.prepararCadastro()}"
-          styleClass="ui-button-success"
-          style="margin-right: 0.5rem"
-          update=":dialogs:manage-product-content"
-          oncomplete="PF('manageProductDialog').show()"
-        >
-        </p:commandButton>
-        <p:commandButton
-          value="#{crudView.deleteButtonMessage}"
-          icon="pi pi-pencil"
-          actionListener="#{crudView.deleteSelectedProducts}"
-          styleClass="ui-button-warning"
-          disabled="#{!crudView.hasSelectedProducts()}"
-          style="margin-right: 0.5rem"
-        >
-        </p:commandButton>
-        <p:commandButton
-          value="#{crudView.deleteButtonMessage}"
-          icon="pi pi-trash"
-          actionListener="#{crudView.deleteSelectedProducts}"
-          styleClass="ui-button-danger"
-          disabled="#{!crudView.hasSelectedProducts()}"
-          update="@this"
-        >
-          <p:confirm
-            header="Confirmation"
-            message="Delete the selected products?"
-            icon="pi pi-exclamation-triangle"
-          />
-        </p:commandButton>
+        <h:form>
+          <p:commandButton
+            id="categoria-button-add"
+            value="New"
+            icon="pi pi-plus"
+            actionListener="#{categoriaController.prepararCadastro}"
+            styleClass="ui-button-success"
+            style="margin-right: 0.5rem"
+            update=":dialogs:manage-cetegoria-content"
+            oncomplete="PF('manageCategoriaDialog').show()"
+          >
+          </p:commandButton>
+        </h:form>
+        <h:form id="options">
+          <p:commandButton
+            id="categoria-button-1"
+            value="Alterar"
+            icon="pi pi-pencil"
+            styleClass="ui-button-warning"
+            disabled="#{!categoriaController.hasSelectedCategoria()}"
+            style="margin-right: 0.5rem"
+            update=":dialogs:manage-cetegoria-content"
+            oncomplete="PF('manageCategoriaDialog').show()"
+            process="@this"
+          >
+          </p:commandButton>
+          <p:commandButton
+            id="categoria-button-2"
+            value="Remover"
+            icon="pi pi-trash"
+            styleClass="ui-button-danger"
+            disabled="#{!categoriaController.hasSelectedCategoria()}"
+            process="@this"
+            update=":dialogs:deleteCategoriaDialog"
+            oncomplete="PF('deleteCategoriaDialog').show()"
+          >
+          </p:commandButton>
+        </h:form>
       </p:toolbarGroup>
     </p:toolbar>
 
@@ -65,11 +70,14 @@
             selection="#{categoriaController.categoriaSelecionada}"
             selectionMode="single"
             scrollable="true"
-            scrollHeight="400"
+            scrollHeight="400px"
             resizeMode="expand"
             size="small"
             showGridlines="true"
           >
+            <p:ajax event="rowSelect" update=":options" />
+            <p:ajax event="rowUnselect" update=":options" />
+
             <!--filterMatchMode="contains"-->
 
             <p:column
@@ -84,140 +92,94 @@
         </h:form>
       </div>
 
-      <!-- <div class="table-products ui-g-9">
-              <h1>Produtos</h1>
-              <h:form id="form2">
-                <p:dataTable
-                  size="small"
-                  id="products"
-                  var="product"
-                  value="#{dtContextMenuView.products}"
-                  rowKey="#{product.id}"
-                  selection="#{dtContextMenuView.selectedProduct}"
-                  selectionMode="single"
-                  emptyMessage="No customers found with given criteria"
-                  filteredValue="#{dtFilterView.filteredCustomers1}"
-                  showGridlines="true"
-                >
-                  <p:column
-                    headerText="Descrição"
-                    sortBy="#{customer.name}"
-                    filterBy="#{customer.name}"
-                    filterMatchMode="contains"
-                    colspan="4"
-                  >
-                    <h:outputText value="#{product.name}" />
-                  </p:column>
-                  <p:column
-                    headerText="Quantidade"
-                    sortBy="#{customer.name}"
-                    filterBy="#{customer.name}"
-                    filterMatchMode="contains"
-                  >
-                    <h:outputText value="#{product.name}" />
-                  </p:column>
-                  <p:column
-                    headerText="Valor Compra"
-                    sortBy="#{customer.name}"
-                    filterBy="#{customer.name}"
-                    filterMatchMode="contains"
-                  >
-                    <h:outputText value="#{product.name}" />
-                  </p:column>
-                  <p:column
-                    headerText="Valor Venda"
-                    sortBy="#{customer.name}"
-                    filterBy="#{customer.name}"
-                    filterMatchMode="contains"
-                  >
-                    <h:outputText value="#{product.name}" />
-                  </p:column>
-                </p:dataTable>
-              </h:form>
-            </div> -->
+      <div class="table-products ui-g-9">
+        <h1>Produtos</h1>
+        <h:form id="form2">
+          <p:dataTable
+            size="small"
+            id="products"
+            var="product"
+            value="#{dtContextMenuView.products}"
+            rowKey="#{product.id}"
+            selection="#{dtContextMenuView.selectedProduct}"
+            selectionMode="single"
+            emptyMessage="No customers found with given criteria"
+            filteredValue="#{dtFilterView.filteredCustomers1}"
+            showGridlines="true"
+          >
+            <p:column
+              headerText="Descrição"
+              sortBy="#{customer.name}"
+              filterBy="#{customer.name}"
+              filterMatchMode="contains"
+              colspan="4"
+            >
+              <h:outputText value="#{product.name}" />
+            </p:column>
+            <p:column
+              headerText="Quantidade"
+              sortBy="#{customer.name}"
+              filterBy="#{customer.name}"
+              filterMatchMode="contains"
+            >
+              <h:outputText value="#{product.name}" />
+            </p:column>
+            <p:column
+              headerText="Valor Compra"
+              sortBy="#{customer.name}"
+              filterBy="#{customer.name}"
+              filterMatchMode="contains"
+            >
+              <h:outputText value="#{product.name}" />
+            </p:column>
+            <p:column
+              headerText="Valor Venda"
+              sortBy="#{customer.name}"
+              filterBy="#{customer.name}"
+              filterMatchMode="contains"
+            >
+              <h:outputText value="#{product.name}" />
+            </p:column>
+          </p:dataTable>
+        </h:form>
+      </div>
     </div>
 
     <h:form id="dialogs">
       <p:dialog
-        header="Product Details"
+        header="Categoria"
         showEffect="fade"
         modal="true"
-        widgetVar="manageProductDialog"
+        widgetVar="manageCategoriaDialog"
         responsive="true"
       >
-        <p:outputPanel id="manage-product-content" class="ui-fluid">
+        <p:outputPanel id="manage-cetegoria-content" class="ui-fluid">
           <p:outputPanel>
-            <p:graphicImage
-              name="images/product/#{crudView.selectedProduct.image}"
-              library="demo"
-              styleClass="product-image"
-              rendered="#{not empty crudView.selectedProduct.image}"
-            />
+            <!-- rendered="#{not empty crudView.selectedProduct.image}" -->
             <div class="field">
-              <p:outputLabel for="name">Name</p:outputLabel>
+              <p:outputLabel for="name">Nome</p:outputLabel>
               <p:inputText
                 id="name"
-                value="#{crudView.selectedProduct.name}"
+                value="#{categoriaController.categoriaSelecionada.descricao}"
                 required="true"
               />
-            </div>
-            <div class="field">
-              <p:outputLabel for="description">Description</p:outputLabel>
-              <p:inputTextarea
-                id="description"
-                value="#{crudView.selectedProduct.description}"
-              />
-            </div>
-            <div class="field">
-              <p:outputLabel for="category">Category</p:outputLabel>
-              <p:selectOneRadio
-                id="category"
-                value="#{crudView.selectedProduct.category}"
-                layout="responsive"
-                columns="2"
-              >
-                <f:selectItem itemLabel="Accessories" itemValue="Accessories" />
-                <f:selectItem itemLabel="Clothing" itemValue="Clothing" />
-                <f:selectItem itemLabel="Electronics" itemValue="Electronics" />
-                <f:selectItem itemLabel="Fitness" itemValue="Fitness" />
-              </p:selectOneRadio>
-            </div>
-            <div class="formgrid grid">
-              <div class="field col">
-                <p:outputLabel for="price">Price</p:outputLabel>
-                <p:inputNumber
-                  id="price"
-                  value="#{crudView.selectedProduct.price}"
-                  symbol=" USD"
-                  symbolPosition="s"
-                  decimalSeparator="."
-                  thousandSeparator=","
-                />
-              </div>
-              <div class="field col">
-                <p:outputLabel for="quantity">Quantity</p:outputLabel>
-                <p:spinner
-                  id="quantity"
-                  min="0"
-                  value="#{crudView.selectedProduct.quantity}"
-                />
-              </div>
             </div>
           </p:outputPanel>
         </p:outputPanel>
 
         <f:facet name="footer">
           <p:commandButton
-            value="Save"
+            value="Salvar"
             icon="pi pi-check"
-            actionListener="#{crudView.saveProduct}"
-            update="manage-product-content"
-            process="manage-product-content @this"
+            actionListener="#{categoriaController.save}"
+            update="manage-cetegoria-content form1:tabela grow :options"
+            process="manage-cetegoria-content @this"
           />
           <p:commandButton
-            value="Cancel"
+            value="Cancelar"
             icon="pi pi-times"
-            onclick="PF('manageProductDialog').hide()"
+            update=":options"
+            onclick="PF('manageCategoriaDialog').hide()"
             class="ui-button-secondary"
             type="button"
           />
@@ -225,41 +187,28 @@
       </p:dialog>
 
       <p:confirmDialog
-        widgetVar="deleteProductDialog"
+        id="deleteCategoriaDialog"
+        widgetVar="deleteCategoriaDialog"
         showEffect="fade"
-        width="300"
-        message="Delete the product?"
+        width="400"
+        message="Remover categoria? ( #{categoriaController.categoriaSelecionada.descricao} )"
         header="Confirm"
         severity="warn"
       >
         <p:commandButton
           value="Yes"
           icon="pi pi-check"
-          actionListener="#{crudView.deleteProduct}"
+          actionListener="#{categoriaController.remover}"
           process="@this"
-          oncomplete="PF('deleteProductDialog').hide()"
+          update="form1:tabela grow :options"
+          oncomplete="PF('deleteCategoriaDialog').hide()"
         />
         <p:commandButton
           value="No"
           type="button"
           styleClass="ui-button-secondary"
           icon="pi pi-times"
-          onclick="PF('deleteProductDialog').hide()"
-        />
-      </p:confirmDialog>
-
-      <p:confirmDialog global="true" showEffect="fade" width="300">
-        <p:commandButton
-          value="Yes"
-          type="button"
-          styleClass="ui-confirmdialog-yes"
-          icon="pi pi-check"
-        />
-        <p:commandButton
-          value="No"
-          type="button"
-          styleClass="ui-confirmdialog-no ui-button-secondary"
-          icon="pi pi-times"
+          onclick="PF('deleteCategoriaDialog').hide()"
         />
       </p:confirmDialog>
     </h:form>

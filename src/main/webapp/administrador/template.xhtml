@@ -12,35 +12,36 @@
     <h:outputStylesheet name="/css/admin/style.css" />
     <div class="container">
       <div class="teste">
-        <p:menu>
-          <p:submenu label="Manutenção">
-            <!-- <p:menuitem
-                          value="Save (Non-Ajax)"
-                          action="#{menuView.save}"
-                          update="messages"
-                          ajax="false"
-                          icon="pi pi-save"
-                        /> -->
-            <p:menuitem
-              value="Categorias"
-              icon="pi pi-tag"
-              outcome="/administrador/categoria/index.xhtml"
-            />
+        <h:form class="ui-form">
+          <p:menu>
+            <p:submenu label="Manutenção">
+              <!-- <p:menuitem
+                            value="Save (Non-Ajax)"
+                            action="#{menuView.save}"
+                            update="messages"
+                            ajax="false"
+                            icon="pi pi-save"
+                          /> -->
+              <p:menuitem
+                value="Categorias"
+                icon="pi pi-tag"
+                outcome="/administrador/categoria/index.xhtml"
+              />
 
-            <p:menuitem
-              value="Produtos"
-              icon="pi pi-tag"
-              outcome="/administrador/produto/index.xhtml"
-            />
-            <p:menuitem
-              value="Logout (disabled)"
-              icon="pi pi-power-off"
-              disabled="true"
-            />
-          </p:submenu>
-        </p:menu>
-
-        <div id="content" class="content">
+              <p:menuitem
+                value="Produtos"
+                icon="pi pi-tag"
+                outcome="/administrador/produto/index.xhtml"
+              />
+              <p:menuitem
+                value="Logout (disabled)"
+                icon="pi pi-power-off"
+                disabled="true"
+              />
+            </p:submenu>
+          </p:menu>
+        </h:form>
+        <div id="content2" class="content">
           <ui:insert name="content2"></ui:insert>
         </div>
       </div>
