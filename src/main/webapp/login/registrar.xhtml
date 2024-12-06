@@ -1,86 +1,87 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html
-  xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-  xmlns:h="jakarta.faces.html"
-  xmlns:f="jakarta.faces.core"
-  xmlns:p="http://primefaces.org/ui"
->
-  <body>
-    <h:head>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <h:outputStylesheet name="/css/normalize.css" />
-      <h:outputStylesheet name="/css/style.css" />
-    </h:head>
-
-    <h:form
-      style="
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        margin-top: 250px;
-      "
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="jakarta.faces.html"
+    xmlns:f="jakarta.faces.core"
+    xmlns:p="http://primefaces.org/ui"
     >
-      <div>
-        <div style="margin-bottom: 10px">
-          <a style="font-family: Arial; font-weight: bold; font-size: 20px"
-            >Registrar</a
-          >
-          <br />
-        </div>
-        <div style="margin-bottom: 20px">
-          <a>Entre com seus dados para se registrar</a>
-        </div>
-        <h:panelGroup style="display: flex; flex-direction: column; gap: 20px;">
-          <div style="margin-bottom: 10px; border-bottom: black" class="field">
-            <span class="ui-float-label">
-              <p:inputText
-                id="nome"
-                value="#{loginController.pessoaCadastro.nome}"
-                style="width: 350px"
-                required="true"
-                label="Nome"
-              />
-              <p:outputLabel for="@previous" value="Nome" />
-            </span>
-          </div>
-          <div style="margin-bottom: 10px; border-bottom: black" class="field">
-            <span class="ui-float-label">
-              <p:inputText
-                id="login"
-                value="#{loginController.pessoaCadastro.login}"
-                style="width: 350px"
-                required="true"
-                label="Email"
-              />
-              <p:outputLabel for="@previous" value="Email" />
-            </span>
-          </div>
-          <div class="field">
-            <span class="ui-float-label">
-              <p:inputText
-                id="senha"
-                value="#{loginController.pessoaCadastro.senha}"
-                type="password"
-                style="width: 350px"
-                required="true"
-                label="Senha"
-              />
-              <p:outputLabel for="@previous" value="Senha" />
-            </span>
-            <br />
-            <p:commandButton
-              value="Cadastrar"
-              update="@form"
-              action="#{loginController.cadastrarUsuario()}"
-              style="width: 350px"
-            />
-          </div>
-        </h:panelGroup>
-      </div>
-    </h:form>
-  </body>
+    <body>
+        <h:head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <h:outputStylesheet name="/css/normalize.css" />
+            <h:outputStylesheet name="/css/style.css" />
+        </h:head>
+
+        <h:form
+            style="
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-top: 250px;
+            "
+            >
+            <div>
+                <div style="margin-bottom: 10px">
+                    <a style="font-family: Arial; font-weight: bold; font-size: 20px"
+                       >Registrar</a
+                    >
+                    <br />
+                </div>
+                <div style="margin-bottom: 20px">
+                    <a>Entre com seus dados para se registrar</a>
+                </div>
+                <h:panelGroup style="display: flex; flex-direction: column; gap: 20px;">
+                    <div style="margin-bottom: 10px; border-bottom: black" class="field">
+                        <span class="ui-float-label">
+                            <p:inputText
+                                id="nome"
+                                value="#{loginController.pessoaCadastro.nome}"
+                                style="width: 350px"
+                                required="true"
+                                label="Nome"
+                                />
+                            <p:outputLabel for="@previous" value="Nome" />
+                        </span>
+                    </div>
+                    <div style="margin-bottom: 10px; border-bottom: black" class="field">
+                        <span class="ui-float-label">
+                            <p:inputText
+                                id="login"
+                                value="#{loginController.pessoaCadastro.login}"
+                                style="width: 350px"
+                                required="true"
+                                label="Email"
+                                />
+                            <p:outputLabel for="@previous" value="Email" />
+                        </span>
+                    </div>
+                    <div class="field">
+                        <span class="ui-float-label">
+                            <p:inputText
+                                id="senha"
+                                value="#{loginController.pessoaCadastro.senha}"
+                                type="password"
+                                style="width: 350px"
+                                required="true"
+                                label="Senha"
+                                />
+                            <p:outputLabel for="@previous" value="Senha" />
+                        </span>
+                        <br />
+                        <p:commandButton
+                            value="Cadastrar"
+                            update="@form"
+                            action="#{loginController.cadastrarUsuario()}"
+                            style="width: 350px"
+                            />
+                    </div>
+                </h:panelGroup>
+            </div>
+        </h:form>
+    </body>
 </html>
+

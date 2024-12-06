@@ -4,6 +4,7 @@
  */
 package br.edu.ifsp.pep.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -51,7 +52,7 @@ public class Endereco implements Serializable {
     private String referencia;
 
     @Column(nullable = false)
-    private int numero;
+    private String numero;
 
     public int getId() {
         return id;
@@ -101,11 +102,11 @@ public class Endereco implements Serializable {
         this.referencia = referencia;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
     
