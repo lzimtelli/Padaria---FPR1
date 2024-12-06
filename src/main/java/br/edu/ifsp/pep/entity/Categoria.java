@@ -22,8 +22,8 @@ import java.util.Objects;
 @Entity
 @Table(name = "categoria")
 @NamedQueries({
-    @NamedQuery(name = "Categoria.buscaTodas", query = "SELECT c FROM Categoria c"),
-    @NamedQuery(name = "Categoria.buscaPorCod", query = "SELECT c FROM Categoria c WHERE c.idCategoria = :id")
+        @NamedQuery(name = "Categoria.buscaTodas", query = "SELECT c FROM Categoria c"),
+        @NamedQuery(name = "Categoria.buscaPorCod", query = "SELECT c FROM Categoria c WHERE c.idCategoria = :id")
 })
 public class Categoria implements Serializable {
 
