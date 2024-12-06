@@ -7,11 +7,15 @@
     xmlns:f="jakarta.faces.core">
     <ui:define name="content">
         <h:head>
-            <h:outputStylesheet name="css/main/produto.css" />
+          
             <title>Padaria Familiar</title>
         </h:head>
         <div class="card product">
             <h:form id="form">
+                
+                <p:commandButton value = "finalizar" type="submit" action="#{vendaController.finalizarVenda()}">
+                  
+                </p:commandButton>
                 <p:dataView  var="product" value="#{vendaController.produtos}" rows="12" paginator="true"
                              rowsPerPageTemplate="6,12,16"
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -44,7 +48,7 @@
                                                      value="Adicionar"
                                                      icon="pi pi-shopping-cart"
                                                      disabled="#{product.produtoStatus == 'Indisponivel'}"
-                                                     action="#{vendaController.adicionar(product)}"
+                                                     action="#{vendaController.adicionarProdutoAoCarrinho(product, 1)}"
                                                      process="@this"
                                                      update="@form"
                                                      >
@@ -62,7 +66,7 @@
 
                     <p:dataViewListItem>
                         <div class="product-list-item">
-                            <p:graphicImage name="imgs/picanha.jpg" />
+                            <p:graphicImage name="imgs/heineken.jpg" />
                             <div class="product-list-detail">
                                 <div class="product-description">#{product.descricao}</div>
                                 <i class="pi pi-tag product-category-icon"></i>
@@ -80,7 +84,7 @@
                                                      value="Adicionar"
                                                      icon="pi pi-shopping-cart"
                                                      disabled="#{product.produtoStatus == 'Indisponivel'}"
-                                                     action="#{vendaController.adicionar(product)}"
+                                                     action="#{vendaController.adicionarProdutoAoCarrinho(product, 1)}"
                                                      process="@this"
                                                      update="@form"
                                                      >
