@@ -37,6 +37,11 @@ public class LoginController implements Serializable {
         
         return "/login/login.xhtml";
     }
+    
+    public String alterarDados(){
+        pessoaDAO.alterar(pessoaAutenticada);
+        return "/pessoa/meuPerfil";
+    }
 
     public boolean usuarioLogado() {
         return pessoaAutenticada != null;
