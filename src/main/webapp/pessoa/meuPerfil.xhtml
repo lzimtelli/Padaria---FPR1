@@ -122,8 +122,19 @@
                                 <h:outputText value="#{endereco.bairro}" />
                             </p:column>
                         </p:dataTable>
-                        <p:commandButton value="Adicionar Endereco" 
+
+                        <p:commandButton value="Adicionar Endereco"
+                                         action="cadastroLogradouro.xhtml"
+                                         process="@this"
                                          />
+
+                        <p:commandButton value="Remover Endereco"
+                                         actionListener="#{enderecoController.remover}"
+                                         update="@form"
+                                         icon="pi pi-trash"
+                                         disabled="#{empty enderecoController.enderecoSelecionado}"
+                                         />
+
                     </div>
                 </div>
             </div>
