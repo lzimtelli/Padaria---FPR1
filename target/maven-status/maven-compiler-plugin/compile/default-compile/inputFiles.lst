@@ -2,10 +2,9 @@ D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entit
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Produto.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\VendaDAO.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Pessoa.java
-D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\ForncedorDAO.java
+D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\ProdutoStatus.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\FornecedorDAO.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\PessoaDAO.java
-D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\ItemCarrinhoDAO.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Venda.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\dao\ProdutoDAO.java
 D:\Faculdade\Codigos\4 semestre\Padaria-FPR1\src\main\java\br\edu\ifsp\pep\entity\Fornecedor.java
