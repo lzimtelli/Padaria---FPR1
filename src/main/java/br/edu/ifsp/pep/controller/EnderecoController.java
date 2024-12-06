@@ -26,7 +26,7 @@ public class EnderecoController implements Serializable {
     private EnderecoDAO enderecoDAO;
 
     private Endereco endereco = new Endereco();
-    private Endereco enderecoSelecionado;
+    private Endereco enderecoSelecionado = new Endereco();
 
     private List<Endereco> enderecos;
 
@@ -46,7 +46,7 @@ public class EnderecoController implements Serializable {
     }
 
     public void prepararCadastro() {
-        System.out.println("teste");
+        enderecoSelecionado = new Endereco();
         System.out.println(enderecos.size());
     }
 
@@ -66,6 +66,10 @@ public class EnderecoController implements Serializable {
             return "/pessoa/meuPerfil";
         }
         return null;
+    }
+    
+    public void alterar(){
+        enderecoDAO.alterar(endereco);
     }
 
     public EnderecoDAO getEnderecoDAO() {
