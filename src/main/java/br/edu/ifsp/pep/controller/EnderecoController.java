@@ -24,10 +24,13 @@ public class EnderecoController implements Serializable{
     @Inject
     private EnderecoDAO enderecoDAO;
     
-        private Endereco endereco = new Endereco();
+    private Endereco endereco = new Endereco();
     private Endereco enderecoSelecionado;
 
     private List<Endereco> enderecos;
+    
+    @Inject
+    private LoginController pessoaAutenticada;
     
         public void remover() {
         if (enderecoSelecionado != null) {
@@ -84,6 +87,9 @@ public class EnderecoController implements Serializable{
     }
 
     public List<Endereco> getEnderecos() {
+        if(enderecos == null){
+            enderecos = enderecoDAO.buscaPorUsuario(pessoaAutenticada.getPessoaAutenticada());
+        }
         return enderecos;
     }
 

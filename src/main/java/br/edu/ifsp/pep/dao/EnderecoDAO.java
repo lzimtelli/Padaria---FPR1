@@ -18,7 +18,7 @@ import java.util.List;
 public class EnderecoDAO extends AbstractDAO<Endereco> {
 
     public List<Endereco> buscaPorUsuario(Pessoa pessoa) {
-        TypedQuery<Endereco> query = em.createNamedQuery("Endereco.buscarTodosUsuario", Endereco.class);
+        TypedQuery<Endereco> query = em.createNamedQuery("Endereco.buscaPorUsuario", Endereco.class);
         query.setParameter("pessoa", pessoa);
 
         return query.getResultList();

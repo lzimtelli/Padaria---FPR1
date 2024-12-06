@@ -35,6 +35,14 @@ public class LifeCycleListener implements PhaseListener {
             }
         }
         
+        if(pagina.equals("/login/login.xhtml")){
+            if(loginController.getPessoaAutenticada() == null){
+              System.out.println("precisa autenticar");
+            } else {
+                redirecionar(ctx, "/pessoa/meuPerfil.xhtml");
+            }
+        }
+        
 //        if(pagina.equals("/pessoa/ListPessoa.xhtml")){
 //            if(loginController.getPessoaAutenticada() == null){
 //                // redirecionar para pagina de erro ou login
