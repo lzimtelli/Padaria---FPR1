@@ -3,6 +3,7 @@ package br.edu.ifsp.pep.entity;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "carrinho")
@@ -17,13 +18,20 @@ public class Carrinho implements Serializable {
     private Long idCarrinho;
 
     @ManyToOne
-    @JoinColumn(name = "id_pessoa", referencedColumnName = "id_cliente", nullable = false)
+    @JoinColumn(name = "id_pessoa", referencedColumnName = "id_pessoa", nullable = false)
     private Pessoa pessoa;
 
-    @OneToMany(mappedBy = "carrinho", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ItemCarrinho> itemCarrinhos;
-    
-    // Getters e setters
+    @ManyToMany
+    @JoinTable(
+            name = "carrinho_produto", // Nome da tabela intermediária
+            joinColumns = @JoinColumn(name = "id_carrinho"), // Chave estrangeira para Carrinho
+            inverseJoinColumns = @JoinColumn(name = "id_produto") // Chave estrangeira para Produto
+    )
+    private List<Produto> produtos;
+
+    public Carrinho() {
+    }
+
     public Long getIdCarrinho() {
         return idCarrinho;
     }
@@ -40,11 +48,34 @@ public class Carrinho implements Serializable {
         this.pessoa = pessoa;
     }
 
-    public List<ItemCarrinho> getItemCarrinhos() {
-        return itemCarrinhos;
+    public List<Produto> getProdutos() {
+        return produtos;
     }
 
-    public void setItemCarrinhos(List<ItemCarrinho> itemCarrinhos) {
-        this.itemCarrinhos = itemCarrinhos;
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 47 * hash + Objects.hashCode(this.idCarrinho);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Carrinho other = (Carrinho) obj;
+        return Objects.equals(this.idCarrinho, other.idCarrinho);
+    }
+
 }
