@@ -9,7 +9,13 @@
     <ui:define name="content">
         <h:form>
 
-
+            <div align="right" style="margin-right: 30px;">
+                <h:panelGroup rendered="#{loginController.usuarioLogado()}">
+                    <p:commandButton value="Logout" 
+                                     update="@form" 
+                                     action="#{loginController.logout()}" /> 
+                </h:panelGroup>
+            </div>
             <div class="grid-layout" 
                  style="display: grid;
                  grid-template-columns: 1fr 1fr;
@@ -117,21 +123,10 @@
                             </p:column>
                         </p:dataTable>
                         <p:commandButton value="Adicionar Endereco" 
-                                         style="width: 300px"
                                          />
                     </div>
                 </div>
             </div>
-
-            <h:panelGroup rendered="#{loginController.usuarioLogado()}">
-                <h:outputText value="Bem-vindo!" />
-                <br />
-                <br />
-                <p:commandButton value="Logout" 
-                                 update="@form" 
-                                 action="#{loginController.logout()}" /> 
-            </h:panelGroup>
         </h:form>
     </ui:define>
-
 </ui:composition>

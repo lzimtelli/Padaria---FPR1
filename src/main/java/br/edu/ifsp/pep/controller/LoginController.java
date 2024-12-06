@@ -46,6 +46,11 @@ public class LoginController implements Serializable {
     public boolean usuarioLogado() {
         return pessoaAutenticada != null;
     }
+    
+    public boolean usuarioAdministrador() {
+        return pessoaAutenticada != null 
+            && pessoaAutenticada.getNivelAcesso() == NivelAcesso.Administrador;
+    }
 
     public Pessoa getPessoa() {
         return pessoa;

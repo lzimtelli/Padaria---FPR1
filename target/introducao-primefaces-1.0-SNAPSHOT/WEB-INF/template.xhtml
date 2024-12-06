@@ -35,8 +35,7 @@
                 styleClass="padariaHeader"
                 ></h:link>
             <div class="headerEnd">
-                <a href="#">Manutenção</a>
-                <a href="#" class="btn-header"><div>Logout</div></a>
+                <h:link rendered="#{loginController.usuarioAdministrador()}" value="Manutenção"/>
                 <a href="#">Comprar</a>
                 <h:link outcome="/sobreNos">Quem Somos</h:link>
                 <h:link outcome="/pessoa/meuPerfil">Meu Perfil</h:link>
