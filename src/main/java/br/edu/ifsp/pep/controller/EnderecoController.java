@@ -24,7 +24,7 @@ public class EnderecoController implements Serializable{
     @Inject
     private EnderecoDAO enderecoDAO;
     
-        private Endereco endereco = new Endereco();
+    private Endereco endereco = new Endereco();
     private Endereco enderecoSelecionado;
 
     private List<Endereco> enderecos;
