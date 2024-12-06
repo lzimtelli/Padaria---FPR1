@@ -23,60 +23,51 @@
                     <a>Cadastro Logradouro</a>
                 </div>
                 <h:panelGroup>
-                    <div style="margin-bottom: 10px; border-bottom: black;" class="field">
-                        <span class="ui-float-label">
-                            <p:inputText id="bairro" 
-                                         value="#{enderecoController.endereco.bairro}" 
-                                         style="width: 350px"
-                                         required="true"
-                                         label="Bairro"
-                                         />
-                            <p:outputLabel for="@previous" value="Bairro" />
-                        </span>
+                    <div style="margin-bottom: 10px;" class="field">
+                        <p:outputLabel for="bairro" value="Bairro" />
+                        <p:inputText id="bairro" 
+                                     value="#{enderecoController.endereco.bairro}" 
+                                     style="width: 350px"
+                                     required="true"
+                                     label="Bairro"
+                                     />
                     </div>
-                    <div style="margin-bottom: 10px; border-bottom: black;" class="field">
-                        <span class="ui-float-label">
-                            <p:inputText id="cidade" 
-                                         value="#{enderecoController.endereco.cidade}" 
-                                         style="width: 350px"
-                                         required="true"
-                                         label="Cidade"
-                                         />
-                            <p:outputLabel for="@previous" value="Cidade" />
-                        </span>
+                    <div style="margin-bottom: 10px;" class="field">
+                        <p:outputLabel for="cidade" value="Cidade" />
+                        <p:inputText id="cidade" 
+                                     value="#{enderecoController.endereco.cidade}" 
+                                     style="width: 350px"
+                                     required="true"
+                                     label="Cidade"
+                                     />
                     </div>
-                    <div style="margin-bottom: 10px; border-bottom: black;" class="field">
-                        <span class="ui-float-label">
-                            <p:inputText id="logradouro" 
-                                         value="#{enderecoController.endereco.logradouro}" 
-                                         style="width: 350px"
-                                         required="true"
-                                         label="Logradouro"
-                                         />
-                            <p:outputLabel for="@previous" value="Logradouro" />
-                        </span>
+                    <div style="margin-bottom: 10px;" class="field">
+                        <p:outputLabel for="logradouro" value="Logradouro" />
+                        <p:inputText id="logradouro" 
+                                     value="#{enderecoController.endereco.logradouro}" 
+                                     style="width: 350px"
+                                     required="true"
+                                     label="Logradouro"
+                                     />
                     </div>
-                    <div style="margin-bottom: 10px; border-bottom: black;" class="field">
-                        <span class="ui-float-label">
-                            <p:inputText id="numero" 
-                                         value="#{enderecoController.endereco.numero}" 
-                                         style="width: 350px"
-                                         required="true"
-                                         label="Numero"
-                                         />
-                            <p:outputLabel for="@previous" value="Numero" />
-                        </span>
+                    <div style="margin-bottom: 10px;" class="field">
+                        <p:outputLabel for="numero" value="Número" />
+                        <p:inputText id="numero" 
+                                     value="#{enderecoController.endereco.numero}" 
+                                     style="width: 350px"
+                                     required="true"
+                                     label="Numero"
+                                     />
                     </div>
-                    <div class="field">
-                        <span class="ui-float-label">
-                            <p:inputText id="referencia" 
-                                         value="#{enderecoController.endereco.referencia}" 
-                                         style="width: 350px"
-                                         label="Referencia"
-                                         />
-                            <p:outputLabel for="@previous" value="Referencia" />
-                        </span>
-                        <br />
+                    <div style="margin-bottom: 10px;" class="field">
+                        <p:outputLabel for="referencia" value="Referência" />
+                        <p:inputText id="referencia" 
+                                     value="#{enderecoController.endereco.referencia}" 
+                                     style="width: 350px"
+                                     label="Referencia"
+                                     />
+                    </div>
+                    <div>
                         <p:commandButton value="Adicionar" 
                                          update="@form" 
                                          action="#{enderecoController.adicionar()}" 

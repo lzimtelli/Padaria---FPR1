@@ -23,40 +23,35 @@
                     <a>Entre com seus dados para se registrar</a>
                 </div>
                 <h:panelGroup>
-                    <div style="margin-bottom: 10px; border-bottom: black;" class="field">
-                        <span class="ui-float-label">
-                            <p:inputText id="nome" 
-                                         value="#{loginController.pessoaCadastro.nome}" 
-                                         style="width: 350px"
-                                         required="true"
-                                         label="Nome"
-                                         />
-                            <p:outputLabel for="@previous" value="Nome" />
-                        </span>
+                    <div style="margin-bottom: 10px;" class="field">
+                        <p:outputLabel for="nome" value="Nome" />
+                        <p:inputText id="nome" 
+                                     value="#{loginController.pessoaCadastro.nome}" 
+                                     style="width: 350px"
+                                     required="true"
+                                     label="Nome"
+                                     />
                     </div>
-                    <div style="margin-bottom: 10px; border-bottom: black;" class="field">
-                        <span class="ui-float-label">
-                            <p:inputText id="login" 
-                                         value="#{loginController.pessoaCadastro.login}" 
-                                         style="width: 350px"
-                                         required="true"
-                                         label="Email"
-                                         />
-                            <p:outputLabel for="@previous" value="Email" />
-                        </span>
+                    <div style="margin-bottom: 10px;" class="field">
+                        <p:outputLabel for="login" value="Email" />
+                        <p:inputText id="login" 
+                                     value="#{loginController.pessoaCadastro.login}" 
+                                     style="width: 350px"
+                                     required="true"
+                                     label="Email"
+                                     />
                     </div>
-                    <div class="field">
-                        <span class="ui-float-label">
-                            <p:inputText id="senha" 
-                                         value="#{loginController.pessoaCadastro.senha}" 
-                                         type="password" 
-                                         style="width: 350px"
-                                         required="true"
-                                         label="Senha"
-                                         />
-                            <p:outputLabel for="@previous" value="Senha" />
-                        </span>
-                        <br />
+                    <div style="margin-bottom: 20px;" class="field">
+                        <p:outputLabel for="senha" value="Senha" />
+                        <p:inputText id="senha" 
+                                     value="#{loginController.pessoaCadastro.senha}" 
+                                     type="password" 
+                                     style="width: 350px"
+                                     required="true"
+                                     label="Senha"
+                                     />
+                    </div>
+                    <div>
                         <p:commandButton value="Cadastrar" 
                                          update="@form" 
                                          action="#{loginController.cadastrarUsuario()}" 
@@ -66,5 +61,6 @@
                 </h:panelGroup>
             </div>
         </h:form>
+
     </body>
 </html>
