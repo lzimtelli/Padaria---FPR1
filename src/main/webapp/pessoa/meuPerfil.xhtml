@@ -84,7 +84,8 @@
 
                     <div style="margin-left: 20px; margin-bottom: 20px;">
                         <p:commandButton value="Alterar Dados" 
-                                         update="@form" 
+                                         update="@form"
+                                         icon="pi pi-pencil"
                                          action="#{loginController.alterarDados}" 
                                          style="width: 300px"
                                          />
@@ -97,19 +98,17 @@
                     <h1 style="margin-left:20px;">Meus Logradouros </h1>
 
                     <div class="field grid" style="margin-left: 20px; margin-bottom: 20px;">
-                        <p:dataTable
-                            id="tabela"
-                            value="#{enderecoController.enderecos}"
-                            var="endereco"
-                            rowKey="#{endereco.id}"
-                            selection="#{enderecoController.enderecoSelecionado}"
-                            selectionMode="single"
-                            scrollable="true"
-                            scrollHeight="400"
-                            resizeMode="expand"
-                            size="small"
-                            showGridlines="true"
-                            >
+                        <p:dataTable id="tabela"
+                                     value="#{enderecoController.enderecos}"
+                                     var="endereco"
+                                     rowKey="#{endereco.id}"
+                                     selection="#{enderecoController.enderecoSelecionado}"
+                                     selectionMode="single"
+                                     scrollable="true"
+                                     scrollHeight="400"
+                                     resizeMode="expand"
+                                     size="small"
+                                     showGridlines="true">
                             <!--filterMatchMode="contains"-->
 
                             <p:column headerText="Logradouro">
@@ -122,10 +121,60 @@
                                 <h:outputText value="#{endereco.bairro}" />
                             </p:column>
                         </p:dataTable>
-                        <p:commandButton value="Adicionar Endereco" 
+
+                        <p:commandButton value="Adicionar Endereco"
+                                         action="cadastroLogradouro.xhtml"
                                          />
+
+                        <!-- Botão Alterar -->
+                        <p:commandButton value="Alterar Endereco"
+                                         actionListener="#{enderecoController.prepararCadastro}"
+                                         oncomplete="PF('dlgAlterarEndereco').show()"
+                                         icon="pi pi-pencil"
+                                         disabled="#{enderecoController.enderecoSelecionado == null}"
+                                         style="margin-right: 10px;" />
+
+                        <!-- Botão Remover -->
+                        <p:commandButton value="Remover Endereco"
+                                         actionListener="#{enderecoController.remover}"
+                                         update="@form"
+                                         icon="pi pi-trash"
+                                         disabled="#{enderecoController.enderecoSelecionado == null}"
+                                         />
+
                     </div>
                 </div>
+
+                <p:dialog id="dlgAlterarEndereco"
+                          widgetVar="dlgAlterarEndereco"
+                          header="Alterar Endereço"
+                          modal="true"
+                          closable="true"
+                          resizable="false"
+                          style="width: 400px;">
+
+                    <div class="field grid" style="margin-bottom: 10px;">
+                        <p:outputLabel value="Logradouro" for="logradouro" />
+                        <p:inputText id="logradouro"
+                                     value="#{enderecoController.enderecoSelecionado.logradouro}" />
+                    </div>
+                    <div class="field grid" style="margin-bottom: 10px;">
+                        <p:outputLabel value="Número" for="numero" />
+                        <p:inputText id="numero"
+                                     value="#{enderecoController.enderecoSelecionado.numero}" />
+                    </div>
+                    <div class="field grid" style="margin-bottom: 10px;">
+                        <p:outputLabel value="Bairro" for="bairro" />
+                        <p:inputText id="bairro"
+                                     value="#{enderecoController.enderecoSelecionado.bairro}" />
+                    </div>
+                    <div style="text-align: right;">
+                        <p:commandButton value="Salvar"
+                                         action="#{enderecoController.adicionar}"
+                                         update="@form"
+                                         oncomplete="PF('dlgAlterarEndereco').hide()" />
+                    </div>
+                </p:dialog>
             </div>
         </h:form>
     </ui:define>

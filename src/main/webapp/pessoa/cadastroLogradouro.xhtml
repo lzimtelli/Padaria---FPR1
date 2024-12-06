@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+        <h:head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <h:outputStylesheet name="/css/normalize.css" />
+            <h:outputStylesheet name="/css/style.css" />
+        </h:head>
+
+        <h:form>
+            <div align="center" style="align-self: center; margin-top: 320px; font-family: Arial">
+                <div style="margin-bottom: 10px;">
+                    <a style="font-family: Arial; font-weight: bold; font-size: 20px;">Registrar</a> <br /> 
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <a>Cadastro Logradouro</a>
+                </div>
+                <h:panelGroup>
+                    <div style="margin-bottom: 10px; border-bottom: black;" class="field">
+                        <span class="ui-float-label">
+                            <p:inputText id="bairro" 
+                                         value="#{enderecoController.endereco.bairro}" 
+                                         style="width: 350px"
+                                         required="true"
+                                         label="Bairro"
+                                         />
+                            <p:outputLabel for="@previous" value="Bairro" />
+                        </span>
+                    </div>
+                    <div style="margin-bottom: 10px; border-bottom: black;" class="field">
+                        <span class="ui-float-label">
+                            <p:inputText id="cidade" 
+                                         value="#{enderecoController.endereco.cidade}" 
+                                         style="width: 350px"
+                                         required="true"
+                                         label="Cidade"
+                                         />
+                            <p:outputLabel for="@previous" value="Cidade" />
+                        </span>
+                    </div>
+                    <div style="margin-bottom: 10px; border-bottom: black;" class="field">
+                        <span class="ui-float-label">
+                            <p:inputText id="logradouro" 
+                                         value="#{enderecoController.endereco.logradouro}" 
+                                         style="width: 350px"
+                                         required="true"
+                                         label="Logradouro"
+                                         />
+                            <p:outputLabel for="@previous" value="Logradouro" />
+                        </span>
+                    </div>
+                    <div style="margin-bottom: 10px; border-bottom: black;" class="field">
+                        <span class="ui-float-label">
+                            <p:inputText id="numero" 
+                                         value="#{enderecoController.endereco.numero}" 
+                                         style="width: 350px"
+                                         required="true"
+                                         label="Numero"
+                                         />
+                            <p:outputLabel for="@previous" value="Numero" />
+                        </span>
+                    </div>
+                    <div class="field">
+                        <span class="ui-float-label">
+                            <p:inputText id="referencia" 
+                                         value="#{enderecoController.endereco.referencia}" 
+                                         style="width: 350px"
+                                         label="Referencia"
+                                         />
+                            <p:outputLabel for="@previous" value="Referencia" />
+                        </span>
+                        <br />
+                        <p:commandButton value="Adicionar" 
+                                         update="@form" 
+                                         action="#{enderecoController.adicionar()}" 
+                                         style="width: 350px"
+                                         />
+                    </div>
+                </h:panelGroup>
+            </div>
+        </h:form>
+    </body>
+</html>

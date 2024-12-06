@@ -6,6 +6,7 @@ package br.edu.ifsp.pep.controller;
 
 import br.edu.ifsp.pep.dao.EnderecoDAO;
 import br.edu.ifsp.pep.entity.Endereco;
+import br.edu.ifsp.pep.entity.Pessoa;
 import br.edu.ifsp.pep.util.Mensagem;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
@@ -19,20 +20,20 @@ import java.util.List;
  */
 @Named
 @ViewScoped
-public class EnderecoController implements Serializable{
-    
+public class EnderecoController implements Serializable {
+
     @Inject
     private EnderecoDAO enderecoDAO;
-    
+
     private Endereco endereco = new Endereco();
     private Endereco enderecoSelecionado;
 
     private List<Endereco> enderecos;
-    
+
     @Inject
     private LoginController pessoaAutenticada;
-    
-        public void remover() {
+
+    public void remover() {
         if (enderecoSelecionado != null) {
             System.out.println("Removendo endereco selecionado");
             enderecoDAO.excluir(enderecoSelecionado);
@@ -50,15 +51,20 @@ public class EnderecoController implements Serializable{
     }
 
     public String adicionar() {
+        if (pessoaAutenticada.getPessoaAutenticada().getIdPessoa() == null) {
+            System.out.println("erro");
+        } else {
+            endereco.setPessoa(pessoaAutenticada.getPessoaAutenticada());
+            enderecoDAO.inserir(endereco);
 
-        enderecoDAO.inserir(endereco);
+            enderecos = null;
 
-        enderecos = null;
+            this.endereco = new Endereco();
 
-        this.endereco = new Endereco();
+            Mensagem.sucesso("Endereço cadastrado");
 
-        Mensagem.sucesso("Endereço cadastrado");
-
+            return "/pessoa/meuPerfil";
+        }
         return null;
     }
 
@@ -84,10 +90,11 @@ public class EnderecoController implements Serializable{
 
     public void setEnderecoSelecionado(Endereco enderecoSelecionado) {
         this.enderecoSelecionado = enderecoSelecionado;
+        System.out.println("Endereco selecionado: " + enderecoSelecionado);
     }
 
     public List<Endereco> getEnderecos() {
-        if(enderecos == null){
+        if (enderecos == null) {
             enderecos = enderecoDAO.buscaPorUsuario(pessoaAutenticada.getPessoaAutenticada());
         }
         return enderecos;
@@ -96,6 +103,5 @@ public class EnderecoController implements Serializable{
     public void setEnderecos(List<Endereco> enderecos) {
         this.enderecos = enderecos;
     }
-    
-    
+
 }
