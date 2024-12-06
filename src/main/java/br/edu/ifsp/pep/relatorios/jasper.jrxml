@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jasper" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e98995e6-3050-4c4e-bbbe-eecbac1e2cfe">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[SELECT id_produto,
+	`DESCRICAO`,
+	produto_status,
+	qtd_estoque,
+	qtd_minima,
+	valor_venda,
+	valor_compra,
+	id_categoria
+FROM db_padaria.produto]]>
+	</queryString>
+	<field name="id_produto" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="id_produto"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_produto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="DESCRICAO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DESCRICAO"/>
+		<property name="com.jaspersoft.studio.field.label" value="DESCRICAO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="produto_status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="produto_status"/>
+		<property name="com.jaspersoft.studio.field.label" value="produto_status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="qtd_estoque" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="qtd_estoque"/>
+		<property name="com.jaspersoft.studio.field.label" value="qtd_estoque"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="qtd_minima" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="qtd_minima"/>
+		<property name="com.jaspersoft.studio.field.label" value="qtd_minima"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="valor_venda" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="valor_venda"/>
+		<property name="com.jaspersoft.studio.field.label" value="valor_venda"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="valor_compra" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="valor_compra"/>
+		<property name="com.jaspersoft.studio.field.label" value="valor_compra"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="id_categoria" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_categoria"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_categoria"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<variable name="somaEstoque" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{qtd_estoque}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="mediaValor" class="java.lang.Double" calculation="Average">
+		<variableExpression><![CDATA[$F{valor_venda}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="Variable_1" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="104" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="79" uuid="36aa5822-93cb-42a1-b0f4-66c935c1820a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="40"/>
+				</textElement>
+				<text><![CDATA[Relatório de Vendas]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="79" width="555" height="1" uuid="3c28c1ef-020f-4c94-86a6-ca51a3d17257"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="5" width="80" height="30" uuid="66693dd3-2307-4f70-9f5f-7cfeab94ef35"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+				<text><![CDATA[id_produto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="5" width="200" height="30" uuid="88f56f88-b71c-4ef1-8dca-9f47dfdd40ce"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom"/>
+				<text><![CDATA[DESCRICAO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="5" width="100" height="30" uuid="1263cebb-1382-454f-824c-7a431b9d0579"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+				<text><![CDATA[qtd_estoque]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="5" width="100" height="30" uuid="b1c9c51e-43d5-4acd-8d2f-f4ecbef5bae0"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+				<text><![CDATA[valor_venda]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="80" height="30" uuid="d2c811b3-28aa-4a50-a0bd-69975f54af0c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{id_produto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="0" width="200" height="30" uuid="d3045147-99f0-47c5-96f7-1249f4805d3f"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DESCRICAO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="0" width="100" height="30" uuid="952cb86d-e847-4e17-8b8e-bb40903cef91"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{qtd_estoque}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤#,##0.00;¤-#,##0.00">
+				<reportElement x="380" y="0" width="100" height="30" uuid="b2b52656-dd0a-4edc-a3c0-bb2808870d2b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{valor_venda}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="38e695f0-b013-459c-add3-0d96e90713e7"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="66" splitType="Stretch">
+			<textField>
+				<reportElement x="280" y="30" width="100" height="30" uuid="38d2e4d2-bf95-45f4-8405-593d951323a0"/>
+				<textFieldExpression><![CDATA[$V{somaEstoque}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;#,##0.00#-">
+				<reportElement x="380" y="30" width="100" height="30" uuid="fe1b15ec-f91d-4157-a1ec-8455a97e9d49"/>
+				<textFieldExpression><![CDATA[$V{mediaValor}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="-1" width="560" height="1" uuid="92fd911f-51e0-430d-9a26-bc099d40d160"/>
+			</line>
+			<staticText>
+				<reportElement x="280" y="0" width="100" height="30" uuid="810183fc-ac31-4f03-b64a-b3eebc105194"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Total Estoque]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="0" width="100" height="30" uuid="47ff0883-f9ca-4ce7-98dc-a9ef07270081"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom"/>
+				<text><![CDATA[Média de Valores]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
